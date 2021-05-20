@@ -1,0 +1,22 @@
+{
+    "companias": [
+        {
+            "id": 1,
+            "nombre": "Mercado Libre",
+            "pais_id": 1,
+            "direccion": "Doctor Ramon Medina 108"
+        },
+        {
+            "id": 2,
+            "nombre": "Globant",
+            "pais_id": 2,
+            "direccion": "Joaquin Pedrero Cordova 116"
+        },
+        {
+            "id": 3,
+            "nombre": "Amazon",
+            "pais_id": 3,
+            "direccion": "Manuel Buelta Madrazo"
+        }
+    ]
+}

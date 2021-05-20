@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaudenCafé</title>
+    <link rel="stylesheet" href="/front/css/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Slab:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="/front/css/globales.css">
+    <link rel="stylesheet" href="/front/css/leaflet.css">
+    <link rel="stylesheet" href="/front/css/v2/layout.css">
+</head>
+<body>
+
+    <header class="header-secundario">
+        <p>Inicia una conversación con nosotros al <span><i class="fab fa-whatsapp"></i></span> 932 108 11 20</p>
+        <div class="contenedor-carrito">
+            <i class="fas fa-shopping-cart"></i><p><span id="cantidad-productos-carro"></span> Productos</p>
+        </div>
+    </header>
+
+    <header class="header-principal">
+
+        <div class="contenedor-header contenedor">
+
+            <div class="contenedor-logo">
+                <a href="../../index.html" ><h1><i class="fas fa-mug-hot"></i> Reygo<span>Café</span></h1></a>
+            </div>
+    
+            <div class="contenedor-nav">
+                <i class="fas fa-bars" id="abrir-menu" ></i>
+                <i class="fas fa-times" id="cerrar-menu" ></i>
+                <nav class="nav-principal">
+                    <a href="/front/v2/nosotros.html">Nosotros</a>
+                    <a href="/front/v2/catalogo.html">Catálogo</a>
+                    <a href="/front/v2/terminos.html">Terminos</a>
+                    <a href="/front/v2/contacto.html">Contacto</a>
+                    <a href="./sesion_in.html"><i class="fas fa-user"></i></a>
+                </nav>
+            </div>
+
+
+        </div>
+
+    </header>
+
+
+    <section class="seccion-terminos">
+
+        <div class="contenedor-terminos contenedor">
+
+            <nav class="nav-terminos">
+                <a href="#envios-mexico"><i class="fas fa-angle-right"></i> Envios a todo México</a>
+                <a href="#garantia"><i class="fas fa-angle-right"></i> Politicas de Garantia</a>
+                <a href="#entrega"><i class="fas fa-angle-right"></i> Politica de Entregas</a>
+            </nav>
+
+            <div class="contenedor-informacion-terminos">
+                <div class="termino" id="envios-mexico">
+                    <h3>Envios a todo México</h3>
+                    <p>*Aplican restricciones a zonas urbanas que nos limitan las paqueterías.</p>
+                </div>
+                <div class="termino" id="garantia">
+                    <h3>Politicas de Garantia</h3>
+                    <ul class="lista-terminos">
+                        <li><p>1. En caso de requerir una garantía, enviar un correo a reygo_coffe_info@hotmai.com.mx, especificando los siguientes datos:</p></li>
+                        <li><p>2. Las garantías están sujetas a las políticas del fabricante.</p></li>
+                        <li><p>3. La garantía aplica contra defectos de fabricación y partes de manufactura.</p></li>
+                        <li><p>4. No aplica garantía en caso de haber acudido a un técnico NO certificado (ajeno a Reygo Coffe) o haber intervenido el equipo de manera propia.</p></li>
+                        <li><p>5. No aplica garantía al mal uso del producto.</p></li>
+                    </ul>
+                </div>
+                <div class="termino" id="entrega">
+                    <h3>Politica de Entrega</h3>
+                    <p class="termino-negrita">Entregas Locales</p>
+                    <p>Con el fin de dar un mejor servicio, Reygo Coffe especifica el modo de entrega a clientes locales. Se consideran clientes locales las siguientes zonas: Teapa:Tabasco , Pichucalco:Tabasco , Jalapa:Tabasco , Villahermosa:Tabasco .</p>
+                    <ul class="lista-terminos">
+                        <li><p>1. Una vez recibido el pedido, la entrega se programará en un periodo de 24 horas; las entregas son a partir de las 10:00 a.m. hasta las 5:00 p.m.</p></li>
+
+                        <li><p>2. La mercancía será descargada a pie de camioneta, no se realizarán movimientos en segundos pisos, aeropuertos o centros comerciales que cuenten con un horario de entrega específico.</p></li>
+                        
+                        <li><p>3. Al entregar la mercancía se solicitará firma de la factura (se requerirá nombre, fecha y firma)..</p></li>
+                        
+                        <li><p>4. Todas las entregas de compra en línea deberán estar previamente pagadas, ya que el repartidor no aceptará efectivo.</p></li>
+                        
+                        <li><p>5. Para entregas locales a domicilio, el monto de compra debe ser mayor a $1,000.00 netos, de lo contrario la mercancía se recolecta en matriz o sucursal; se considera entrega local las siguientes zonas: Teapa:Tabasco , Pichucalco:Tabasco , Jalapa:Tabasco , Villahermosa:Tabasco.</p></li>
+                    </ul>
+                    <p class="termino-negrita">Entregas Foraneas</p>
+                    <p>En caso de entregas foráneas, Reygo Coffe o la paquetería seleccionada seguirá las siguientes especificaciones:</p>
+                    <ul class="lista-terminos">
+                        <li><p>1. Es importante mencionar que para poder cumplir con la entrega, es necesario que la dirección de facturación y del destinatario contenga datos completos:</p></li>
+
+                        <li><p>Nombre de calle y numeración correcta.</p></li>
+                        
+                        <li><p>Colonia, ciudad y estado.</p></li>
+                        
+                        <li><p>Código postal.</p></li>
+                        
+                        <li><p>Nombre y teléfono de contacto.</p></li>
+                        
+                        <li><p>Referencias del domicilio.</p></li>
+                        
+                        <li><p>2. La mercancía será descargada a pie de camioneta. No se desempacará ni se subirá a ningún nivel (no se hacen entregas en aeropuertos, centros comerciales, segundos pisos y no incluyen maniobra o entrega con horario).</p></li>
+                        
+                        <li><p>3. Se recolectará firma de recibido ya sea en la guía de embarque o algún documento anexo por parte de Odisa o la paquetería.</p></li>
+                        
+                        <li><p>4. Actualmente no se encuentra disponible la entrega de órdenes en direcciones internacionales.</p></li>
+                        
+                        <li><p>5. Los artículos son empaquetados para su cuidado y protección, por lo que no contamos con envolturas particulares de la marca.</li>
+                        
+                        <li><p>6. Los tiempos de entrega dependerán del código postal al que se envíen..</p></li>
+                    </ul>
+                    <p class="termino-negrita">
+                        En caso de más información puede comunicarse al número 01 333 777 4303 departamento de Atención a Clientes Web.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    
+
+    <footer class="footer-principal">
+
+      <p>Todos los derechos reservados &copy; <span>ReygoCafé</span></p>
+
+      <div class="contenedor-nav-redes">
+          <nav class="redes-sociales">
+              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </nav>
+      </div>
+
+    </footer>
+    
+    <script src="../js/map/leaflet.js"></script>
+    <script src="https://kit.fontawesome.com/bcebffb9a4.js" crossorigin="anonymous"></script>
+    <script type="module" src="../js/app.js"></script>
+
+</body>
+</html>

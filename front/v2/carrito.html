@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaudenCafé</title>
+    <link rel="stylesheet" href="/front/css/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Slab:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="/front/css/globales.css">
+    <link rel="stylesheet" href="/front/css/leaflet.css">
+    <link rel="stylesheet" href="/front/css/v2/layout.css">
+</head>
+<body>
+
+    <header class="header-secundario">
+        <p>Inicia una conversación con nosotros al <span><i class="fab fa-whatsapp"></i></span> 932 108 11 20</p>
+        <div class="contenedor-carrito">
+            <i class="fas fa-shopping-cart"></i><p><span id="cantidad-productos-carro"></span> Productos</p>
+        </div>
+    </header>
+
+    <header class="header-principal">
+
+        <div class="contenedor-header contenedor">
+
+            <div class="contenedor-logo">
+                <a href="../../index.html" ><h1><i class="fas fa-mug-hot"></i> Reygo<span>Café</span></h1></a>
+            </div>
+    
+            <div class="contenedor-nav">
+                <i class="fas fa-bars" id="abrir-menu" ></i>
+                <i class="fas fa-times" id="cerrar-menu" ></i>
+                <nav class="nav-principal">
+                    <a href="/front/v2/nosotros.html">Nosotros</a>
+                    <a href="/front/v2/catalogo.html">Catálogo</a>
+                    <a href="/front/v2/terminos.html">Terminos</a>
+                    <a href="/front/v2/contacto.html">Contacto</a>
+                    <a href="./sesion_in.html"><i class="fas fa-user"></i></a>
+                </nav>
+            </div>
+
+
+        </div>
+
+    </header>
+
+
+    <section class="seccion-carrito-compras">
+
+        <h2 class="puntos">Tu carrito de compras</h2>
+
+        <div class="contenedor-carrito-compras contenedor">
+            <div class="carrito">
+                <div class="contenido-carrito-compras">
+
+                </div>
+            </div>
+            <div class="informacion-total-compras">
+                <p>Total <span id="total-compra"></span> </p>
+            </div>
+        </div>
+
+        <div class="contenedor-informacion-envio contenedor">
+            <h3 class="puntos">Mi informacion de Envio</h3>
+            <div class="estado-envio">
+                <h4>Estados Disponibles para Envio</h4>
+                <div class="campo">
+                    <label>Estado :</label>
+                    <select id="estado">
+                        <option value="no">Seleccione uno...</option>
+                        <option value="Aguascalientes">Aguascalientes</option>
+                        <option value="Baja California">Baja California</option>
+                        <option value="Baja California Sur">Baja California Sur</option>
+                        <option value="Campeche">Campeche</option>
+                        <option value="Chiapas">Chiapas</option>
+                        <option value="Chihuahua">Chihuahua</option>
+                        <option value="CDMX">Ciudad de México</option>
+                        <option value="Coahuila">Coahuila</option>
+                        <option value="Colima">Colima</option>
+                        <option value="Durango">Durango</option>
+                        <option value="Estado de México">Estado de México</option>
+                        <option value="Guanajuato">Guanajuato</option>
+                        <option value="Guerrero">Guerrero</option>
+                        <option value="Hidalgo">Hidalgo</option>
+                        <option value="Jalisco">Jalisco</option>
+                        <option value="Michoacán">Michoacán</option>
+                        <option value="Morelos">Morelos</option>
+                        <option value="Nayarit">Nayarit</option>
+                        <option value="Nuevo León">Nuevo León</option>
+                        <option value="Oaxaca">Oaxaca</option>
+                        <option value="Puebla">Puebla</option>
+                        <option value="Querétaro">Querétaro</option>
+                        <option value="Quintana Roo">Quintana Roo</option>
+                        <option value="San Luis Potosí">San Luis Potosí</option>
+                        <option value="Sinaloa">Sinaloa</option>
+                        <option value="Sonora">Sonora</option>
+                        <option value="Tabasco">Tabasco</option>
+                        <option value="Tamaulipas">Tamaulipas</option>
+                        <option value="Tlaxcala">Tlaxcala</option>
+                        <option value="Veracruz">Veracruz</option>
+                        <option value="Yucatán">Yucatán</option>
+                        <option value="Zacatecas">Zacatecas</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label>Ciudad: </label>
+                    <input type="text" placeholder="Ingrese la ciudad" id="ciudad">
+                </div>
+                <div class="campo">
+                    <label>Codigo Postal: </label>
+                    <input type="number" placeholder="Ingrese la postal" id="postal">
+                </div>
+                <div class="contenedor-direccion-extra">
+                    <button id="mostrar-direccion" type="button" class="boton boton-normal">Usar otra Direccion de Entrega</button>
+                    <div class="campo">
+                        <label>Direccion :</label>
+                        <input type="text" placeholder="Ingrese su direccion" id="direccion">
+                    </div>
+                </div>
+                <div class="campo">
+                    <label>Referencias :</label>
+                    <input type="text" placeholder="Ingrese alguna referencias" id="referencias">
+                </div>
+            </div>
+            <div class="contenido-mi-informacion-envio">
+                <h4>Informacion</h4>
+                <div class="mi-informacion">
+
+                </div>
+            </div>
+
+            <div class="contenedor-boton">
+                <button id="comprar" class="boton boton-editar">Comprar</button>
+            </div>
+        </div>
+
+    </section>
+    
+
+    <footer class="footer-principal">
+
+      <p>Todos los derechos reservados &copy; <span>ReygoCafé</span></p>
+
+      <div class="contenedor-nav-redes">
+          <nav class="redes-sociales">
+              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </nav>
+      </div>
+
+    </footer>
+    
+    <script src="../js/map/leaflet.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://kit.fontawesome.com/bcebffb9a4.js" crossorigin="anonymous"></script>
+    <script type="module" src="../js/app.js"></script>
+
+</body>
+</html>

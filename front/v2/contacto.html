@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaudenCafé</title>
+    <link rel="stylesheet" href="/front/css/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Slab:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="/front/css/globales.css">
+    <link rel="stylesheet" href="/front/css/leaflet.css">
+    <link rel="stylesheet" href="/front/css/v2/layout.css">
+</head>
+<body>
+
+    <header class="header-secundario">
+        <p>Inicia una conversación con nosotros al <span><i class="fab fa-whatsapp"></i></span> 932 108 11 20</p>
+        <div class="contenedor-carrito">
+            <i class="fas fa-shopping-cart"></i><p><span id="cantidad-productos-carro"></span> Productos</p>
+        </div>
+    </header>
+
+    <header class="header-principal">
+
+        <div class="contenedor-header contenedor">
+
+            <div class="contenedor-logo">
+                <a href="../../index.html" ><h1><i class="fas fa-mug-hot"></i> Reygo<span>Café</span></h1></a>
+            </div>
+    
+            <div class="contenedor-nav">
+                <i class="fas fa-bars" id="abrir-menu" ></i>
+                <i class="fas fa-times" id="cerrar-menu" ></i>
+                <nav class="nav-principal">
+                    <a href="/front/v2/nosotros.html">Nosotros</a>
+                    <a href="/front/v2/catalogo.html">Catálogo</a>
+                    <a href="/front/v2/terminos.html">Terminos</a>
+                    <a href="/front/v2/contacto.html">Contacto</a>
+                    <a href="./sesion_in.html"><i class="fas fa-user"></i></a>
+                </nav>
+            </div>
+
+
+        </div>
+
+    </header>
+
+
+    <section class="seccion seccion-contactanos contenedor">
+
+        <h2>Contactanos</h2>
+        <p class="contactanos-parrafo">Estamos para atender todas tus dudas, inquietudes y necesidades de acorde tus propuestas y metas</p>
+
+        <div class="contenedor-contacto-informacion">
+
+            <div class="contacto-informacion">
+
+                <div class="contacto">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <p>Sucursal</p>
+                    <p>Doctor Ramon Medina, Colonia Centro, Teapa, Tabasco</p>
+                </div>
+
+                <div class="contacto">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    <p>Correo Electronico</p>
+                    <p>reygo_coffe@hotmail.com</p>
+                </div>
+
+                <div class="contacto">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <p>Telefono</p>
+                    <p>932 32 2 02 91</p>
+                </div>
+
+            </div>
+
+            <div class="contenedor-contacto-formulario">
+                <div class="contenedor-imagen">
+                    <img src="../public/img/contacto.jpg" alt="imagen contacto">
+                </div>
+    
+                
+                <form action="#" class="formulario-contacto">
+                        <div class="campo">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" placeholder="Tu Nombre">
+                        </div>
+                        <div class="campo">
+                            <label for="email">E-Mail</label>
+                            <input type="email" id="email" placeholder="Tu Correo Electrónico">
+                        </div>
+                        <div class="campo mensaje">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje"></textarea>
+                        </div>
+                        <div class="campo enviar">
+                            <input type="submit" value="Enviar" class="btn btn-negro">
+                        </div>
+                </form>
+                
+            </div>
+
+        </div>
+
+        <div class="contenedor-mapa">
+
+            <h2>Ubicanos</h2>
+
+            <p class="contactanos-parrafo">Llega a nosotros a esta direccion!</p>
+
+            <div class="mapa sombra" id="mapaid">
+                
+            </div>
+
+        </div>
+
+    </section>
+    
+
+    <footer class="footer-principal">
+
+      <p>Todos los derechos reservados &copy; <span>ReygoCafé</span></p>
+
+      <div class="contenedor-nav-redes">
+          <nav class="redes-sociales">
+              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </nav>
+      </div>
+
+    </footer>
+    
+    <script src="../js/map/leaflet.js"></script>
+    <script src="https://kit.fontawesome.com/bcebffb9a4.js" crossorigin="anonymous"></script>
+    <script type="module" src="../js/app.js"></script>
+
+</body>
+</html>

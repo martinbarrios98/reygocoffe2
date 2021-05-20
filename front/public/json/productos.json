@@ -1,0 +1,31 @@
+{
+    "productos": [
+        {
+            "id": 1,
+            "nombre": "Zaachila gourmet",
+            "categoria": "Bases para Frappe",
+            "sabor": "Vainilla",
+            "descripcion": "Las bases para frappé Zaachila gourmet, están fabricadas con materias primas de la más alta calidad, su sabor y rendimiento los hace únicos.",
+            "precio": 300.00,
+            "url": "WhatsApp Image 2021-04-27 at 23.23.15.jpeg"
+        },
+        {
+            "id": 2,
+            "nombre": "Gialinni Gourmet",
+            "categoria": "Jarabes Esenciales",
+            "sabor": "BlueBerry",
+            "descripcion": "Los jarabes Gialinni ofrecen un excelente sabor y color, tienen como particularidad la sencilla disolución en prácticamente cualquier bebida o postre que se le agregue.",
+            "precio": 300.00,
+            "url": "soda-mora.jpeg"
+        },
+        {
+            "id": 3,
+            "nombre": "Smothies",
+            "categoria": "Bases en Polvo",
+            "sabor": "Unisabor",
+            "descripcion": "El frappé y el smoothie son bebidas que actualmente cuentan con una extraordinaria demanda, nuestras bases son el delicioso ingrediente necesario para su correcta elaboración, además se ofrecen en un amplio surtido de sabores y presentaciones.",
+            "precio": 300.00,
+            "url": "frape-refrescante.jpeg"
+        }
+    ]
+}
