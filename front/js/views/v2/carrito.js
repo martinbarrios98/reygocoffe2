@@ -2,6 +2,7 @@ import { verificarLength } from '../../utilidades/verificaciones.js';
 import { alertaNotificacion } from '../../emergentes/emergentes.js';
 import { obtenerProducto, obtenerUsuario } from '../../consultas/v2/consultas.js';
 import { validacionesPedido } from '../../validaciones/validaciones.js';
+import { ventanaImagenMax } from '../../emergentes/emergentes.js';
 
 const pedido = {
     productos:'',
@@ -105,6 +106,7 @@ export async function insertarProductosCarrito(){
             iconoMas.onclick = e =>{sumarCantidad(e)};
             iconoMenos.onclick = e =>{restarCantidad(e)};
             close.onclick = e => {eliminarProducto(e)};
+            imagen.onclick = e => {expandarImagen(e)};
 
         });
         
@@ -274,4 +276,9 @@ export async function agregarPedido(){
         }
 
     });
+}
+
+export async function expandarImagen(e) {
+    const url = e.target.src;
+    ventanaImagenMax(url);
 }

@@ -1,7 +1,7 @@
 import { inicio, descargarProductos, descargarProductosCat, descargarCategoria } from '../../consultas/v2/consultas.js';
 import { verificarLength } from '../../utilidades/verificaciones.js';
 import { alertaNotificacion } from '../../emergentes/emergentes.js';
-
+import { expandarImagen } from '../../views/v2/carrito.js';
 let carrito = [];
 
 let producto = {
@@ -73,6 +73,8 @@ export async function insertarProductos (){
             contenedorProducto.appendChild(contenedorInformacion);
 
             contenedorProductos.appendChild(contenedorProducto);
+            
+            imagen.onclick = e => {expandarImagen(e)};
 
         });
 
