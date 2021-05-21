@@ -1383,7 +1383,7 @@ p.parrafo-notificacion{
     }
 }
 
-@media (min-width:768px){
+@media (min-width:1024px){
     .img-max img{
             width: 50%;
     }
