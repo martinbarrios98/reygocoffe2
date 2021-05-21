@@ -1,4 +1,4 @@
-const urlBase = 'http://localhost:3000/';
+const urlBase = 'https://serverreygo.herokuapp.com/';
 
 export async function edicionUsuario(objeto, id){
 
