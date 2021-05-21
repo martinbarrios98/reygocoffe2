@@ -715,6 +715,7 @@ p.parrafo-notificacion{
     flex: 1;
     border: 1px solid var(--gris);
     padding: 1rem;
+    width: 100%;
 }
 .formulario-contacto textarea {
     height: 20rem;
