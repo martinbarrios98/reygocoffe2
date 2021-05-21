@@ -971,6 +971,10 @@ p.parrafo-notificacion{
     .contenedor-productos{
         grid-template-columns: repeat(3, 1fr);
     }
+    .contenedor-producto img{
+        width: 100%;
+        height: 20rem;
+    }
 }
 
 /** **/
