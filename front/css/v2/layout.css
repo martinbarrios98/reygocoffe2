@@ -523,6 +523,12 @@ p.parrafo-notificacion{
     }
 }
 
+@media (min-width: 1200px){
+    .marca img{
+        right: 11.4rem;
+    }
+}
+
 /** SECCION BOLETIN **/
 
 .seccion-boletin{
