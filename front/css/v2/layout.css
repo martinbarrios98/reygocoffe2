@@ -1389,8 +1389,8 @@ p.parrafo-notificacion{
     }
 }
 
-@media (min-width:1100px){
+@media (min-width:1350px){
     .img-max img{
-            width: 43%;
+            width: 40%;
     }
 }
