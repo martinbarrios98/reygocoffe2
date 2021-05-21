@@ -1391,6 +1391,7 @@ p.parrafo-notificacion{
 
 @media (min-width:1350px){
     .img-max img{
-            width: 40%;
+            width: 38%;
+            height: 55rem;
     }
 }
