@@ -708,7 +708,8 @@ p.parrafo-notificacion{
     align-items: center;
 }
 .formulario-contacto .campo label {
-    flex: 0 0 8rem;
+    flex: 0 0 4rem;
+    text-align: left;
 }
 .formulario-contacto .campo input:not([type="submit"]),
 .formulario-contacto textarea{
