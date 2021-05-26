@@ -128,10 +128,29 @@ export async function informacionCatProducto (identificador){
 
         `;
     }
-    if(nombre === 'Café Tostado' || nombre === 'Café Verde' || nombre === 'Extractos Concentrados'){
+    if(nombre === 'Café Tostado'){
+        parrafoCate.textContent = `
+
+        El café tostado o café crema significa que el grano de café verde pasa por las máquinas tostadoras sin ningún agregado de azúcar. Se utiliza mucho en los bares y cafeterías. Con la tendencia saludable de consumir menos azúcar, los ojos del consumo familiar están puestos cada vez más en este tipo de café.
+
+
+        `;
+    }
+    if(nombre === 'Café Verde '){
         parrafoCate.textContent = `
 
         Somos familias productores aquí en los Altos de Chiapas, en una zona de nombre Tenejapa de la etnia Tzteltal, la producción de café es el principal medio de nuestro ingreso, cosechamos café de Altura entre los 1200 a 1600 MSNM cultivando de manera orgánica, ofrecemos en café Tostado Medio con las presentaciones de 1 kg, le damos los mejores cuidados para obtener café de calidad, seleccionando los mejores granos a mano.
+
+
+        `;
+    }
+    if(nombre === 'Extractos Concentrados'){
+        parrafoCate.textContent = `
+
+        Extracto del grano de café de la zona Pluma Oaxaca. El sabor de és te es uno de los mejores y de más alta calidad a nivel mundial.
+        Su aplicación es excelente para:
+            • Capuchino´s frios • Frappés • Bebidas lácteas
+            • Coctelería • Helados • Nieves • Repostería
 
 
         `;
