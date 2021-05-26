@@ -100,10 +100,10 @@ export async function informacionCatProducto (identificador){
 
     const imagen = document.createElement('img');
     imagen.src = url;
-    imagen.alt = `imagen-${nombre}`;
+    imagen.alt = `imagen-${nombre.trim()}`;
 
     const parrafoCate = document.createElement('p');
-    if(nombre === 'Esencias Gialini'){
+    if(nombre === 'Esencias Gialinni'){
         parrafoCate.textContent = `
 
         Perfectos para disolver en bebidas y postres, cuidando siempre el delicioso sabor. Los puedes usar en:
@@ -155,7 +155,7 @@ export async function informacionCatProducto (identificador){
 
         `;
     }
-    if(nombre === 'Tisanas'){
+    if(nombre === 'Tisanas y Té'){
         parrafoCate.textContent = `
 
         Las tisanas son bebidas hechas con frutos secos y hierbas. Se clasifican en frutales y herbales. Las tisanas frutales tiene una base de manzana y jamaica, que se combinan con diferentes frutos. Las tisanas herbales no tienen frutos deshidratados en esencia son hierbas y/o flores.
@@ -199,7 +199,7 @@ export async function informacionCatProducto (identificador){
 
     contenedorInformacionCate.appendChild(imagen);
     contenedorInformacionCate.appendChild(parrafoCate);
-    if(nombre === 'Tisanas'){
+    if(nombre === 'Tisanas y Té'){
         contenedorInformacionCate.appendChild(campo);
         select.addEventListener('input', e=>buscadorGramos(e));
     }
