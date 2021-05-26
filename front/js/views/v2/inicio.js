@@ -1,6 +1,7 @@
 import Swiper from 'https://unpkg.com/swiper/swiper-bundle.esm.browser.min.js';
 import { verificarLength } from '../../utilidades/verificaciones.js';
 import { obtenerUltimosProductos } from '../../consultas/v2/consultas.js';
+import { agregarCarrito } from '../v2/productos.js';
 
 export async function sliderPrincipal (){
     var swiper = new Swiper(".mySwiper", {
@@ -39,6 +40,7 @@ export async function insertarUltimosProductos(){
             const contenedorProducto = document.createElement('div');
             contenedorProducto.classList.add('ultimo-agregado');
             contenedorProducto.id = id;
+            contenedorProducto.dataset.productoPrecio = precio;
 
             const imagen = document.createElement('img');
             imagen.src = url;
@@ -84,6 +86,8 @@ export async function insertarUltimosProductos(){
             contenedorProductos.appendChild(contenedorProducto);
 
         });
+
+        agregarCarrito();
 
     }else{
         const parrafoDenegacion = document.createElement('p');

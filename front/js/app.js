@@ -3,7 +3,7 @@ import { insertarMapa } from './views/v1/contacto.js';
 //import { insertarInformacion } from './views/terminos.js';
 import { sliderPrincipal, insertarUltimosProductos } from './views/v2/inicio.js';
 import { verCategorias} from './views/v2/catalogo.js';
-import { insertarProductos, cantidadProductos } from './views/v2/productos.js';
+import { insertarProductos, cantidadProductos, agregarCarrito } from './views/v2/productos.js';
 import { crearUsuario, IniciarSesion } from './views/v2/sesion.js';
 import { validarSesionIniciada, iconoSesionIniciada, cerrarSesion } from './views/v2/sesion_in.js';
 import { insertarProductosCarrito, insertarTotalCarrito, insertarInformacionUsuario,agregarPedido, botonDireccionExtra } from './views/v2/carrito.js';
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async e => {
     iconoSesionIniciada();
     cantidadProductos();
     dirigirACarrito();
-
+    scrollPrincipal();
 
     if(window.location.pathname.split('/')[1] === 'index.html'){
         sliderPrincipal();
@@ -105,5 +105,17 @@ function dirigirACarrito(){
         }else{
             window.location = 'carrito.html';
         }
+    })
+}
+
+function scrollPrincipal(){
+    const enlace = document.querySelector('.contenedor-volver a');
+    
+    enlace.addEventListener('click', e =>{
+        e.preventDefault();
+        const seccion = document.querySelector(e.target.attributes[0].value);
+        seccion.scrollIntoView({
+            behavior: 'smooth'
+        });
     })
 }
