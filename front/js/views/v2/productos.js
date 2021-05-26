@@ -145,8 +145,45 @@ export async function informacionCatProducto (identificador){
         `;
     }
 
+    
+    const campo = document.createElement('div');
+    campo.classList.add('campo');
+
+    const label = document.createElement('label');
+    label.textContent = 'Seleccione los gramos que necesita :';
+
+    const select = document.createElement('select');
+    select.id = 'gramos';
+
+    const option = document.createElement('option');
+    option.value = '';
+    option.textContent = 'Seleccione gramos ...';
+
+    const option100 = document.createElement('option');
+    option100.value = '100';
+    option100.textContent = '100g';
+
+    const option200 = document.createElement('option');
+    option200.value = '200';
+    option200.textContent = '200g';
+
+    const option500 = document.createElement('option');
+    option500.value = '500';
+    option500.textContent = '500g';
+    select.appendChild(option);
+    select.appendChild(option100);
+    select.appendChild(option200);
+    select.appendChild(option500);
+
+    campo.appendChild(label);
+    campo.appendChild(select);
+
     contenedorInformacionCate.appendChild(imagen);
     contenedorInformacionCate.appendChild(parrafoCate);
+    if(nombre === 'Tisanas'){
+        contenedorInformacionCate.appendChild(campo);
+        select.addEventListener('input', e=>buscadorGramos(e));
+    }
 
 
 }
@@ -216,5 +253,25 @@ export async function cantidadProductos (){
     }else{
         contenedor.innerHTML = 0;
     }
+
+}
+
+async function buscadorGramos(e){
+
+    const productos = document.querySelectorAll('.contenedor-producto');
+    const valorTexto = e.target.value.trim();
+    const expresion = new RegExp(`${valorTexto}g`, "i");
+
+    console.log(expresion);
+
+    productos.forEach(producto => {
+
+        producto.style.display = 'none';
+
+        if(producto.childNodes[1].childNodes[2].textContent.replace(/\s/g, " ").search(expresion) != -1){
+            producto.style.display = 'grid';
+        }
+
+    });
 
 }

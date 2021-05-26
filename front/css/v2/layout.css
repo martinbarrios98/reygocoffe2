@@ -1030,6 +1030,10 @@ p.parrafo-notificacion{
     text-align: center;
 }
 
+.contenedor-informacion-categoria .campo label{
+    text-align: left;
+}
+
 .contenedor-productos{
     margin-top: 4rem;
 }
@@ -1287,6 +1291,7 @@ p.parrafo-notificacion{
     border-radius: 1rem;
     border: 1px solid var(--negro);
     padding: 1rem 2rem;
+    margin: 2rem 0;
 }
 
 .formulario-ventana .contenedor-botones{
@@ -1503,6 +1508,8 @@ p.parrafo-notificacion{
     margin: 1rem 0;
     font-weight: var(--bold);
 }
+
+
 
 @media(min-width:1024px){
     .seccion-carrito-compras{
