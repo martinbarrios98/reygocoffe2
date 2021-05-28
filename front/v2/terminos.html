@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PaudenCafé</title>
+    <title>ReygoCoffe</title>
     <link  rel="icon"   href="../public/img/icono.png" type="image/png" />
     <link rel="stylesheet" href="/front/css/normalize.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <header class="header-secundario">
+    <header class="header-secundario" id="volver-principal">
         <p>Inicia una conversación con nosotros al <span><i class="fab fa-whatsapp"></i></span> 932 108 11 20</p>
         <div class="contenedor-carrito">
             <i class="fas fa-shopping-cart"></i><p><span id="cantidad-productos-carro"></span> Productos</p>
@@ -31,7 +31,7 @@
         <div class="contenedor-header contenedor">
 
             <div class="contenedor-logo">
-                <a href="../../index.html" ><h1><i class="fas fa-mug-hot"></i> Reygo<span>Café</span></h1></a>
+                <a href="../../index.html" ><h1><i class="fas fa-mug-hot"></i> Reygo<span>Coffe</span></h1></a>
             </div>
     
             <div class="contenedor-nav">
@@ -67,19 +67,19 @@
             <div class="contenedor-informacion-terminos">
 
                 <div class="termino" id="envios-mexico">
-                    <h3>Envios a todo México</h3>
+                    <h4>Envios a todo México</h4>
                     <p>*Aplican restricciones a zonas urbanas que nos limitan las paqueterías.</p>
                 </div>
 
                 <div class="termino" id="garantia">
-                    <h3>Politicas de Garantia</h3>
+                    <h4>Politicas de Garantia</h4>
                     <ul class="lista-terminos">
                         <li><p>1. ReygoCoffe ofrece la garantia de que llegara los productos que el usuario comprará a las oficinas de la paqueteria que prefiera el usuario en caso de entregas foraneas, para entregas locales la garantia de que les llegara los productos a la puerta de su casa</p></li>
                     </ul>
                 </div>
 
                 <div class="termino" id="entrega">
-                    <h3>Politica de Entrega</h3>
+                    <h4>Politica de Entrega</h4>
                     <p class="termino-negrita">Entregas Locales</p>
                     <p>Con el fin de dar un mejor servicio, Reygo Coffe especifica el modo de entrega a clientes locales. Se consideran clientes locales dentro de Tabasco, México</p>
 
@@ -113,7 +113,7 @@
     </section>
     
     <div class="contenedor-volver">
-        <a href="#principal"><i class="fas fa-chevron-up"></i> Volver a Principio</a>
+        <a href="#volver-principal"><i class="fas fa-chevron-up"></i> Volver a Principio</a>
     </div>
 
     <footer class="footer-principal">
@@ -132,6 +132,7 @@
 
     </footer>
     
+    <script src="../js/animacion/anime.min.js"></script>
     <script src="../js/map/leaflet.js"></script>
     <script src="https://kit.fontawesome.com/bcebffb9a4.js" crossorigin="anonymous"></script>
     <script type="module" src="../js/app.js"></script>

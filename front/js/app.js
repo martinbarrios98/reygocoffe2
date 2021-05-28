@@ -8,6 +8,7 @@ import { crearUsuario, IniciarSesion } from './views/v2/sesion.js';
 import { validarSesionIniciada, iconoSesionIniciada, cerrarSesion } from './views/v2/sesion_in.js';
 import { insertarProductosCarrito, insertarTotalCarrito, insertarInformacionUsuario,agregarPedido, botonDireccionExtra } from './views/v2/carrito.js';
 
+
 document.addEventListener('DOMContentLoaded', async e => {
 
     mobileMenu();
@@ -15,6 +16,8 @@ document.addEventListener('DOMContentLoaded', async e => {
     cantidadProductos();
     dirigirACarrito();
     scrollPrincipal();
+    animacionesEncabezados();
+    navegacionFija();
 
     if(window.location.pathname.split('/')[1] === 'index.html'){
         sliderPrincipal();
@@ -113,9 +116,84 @@ function scrollPrincipal(){
     
     enlace.addEventListener('click', e =>{
         e.preventDefault();
-        const seccion = document.querySelector(e.target.attributes[0].value);
+        let seccion;
+        if(e.target.tagName === 'I'){
+            seccion = document.querySelector(e.target.parentElement.attributes[0].value);
+        }else{
+            seccion = document.querySelector(e.target.attributes[0].value);
+        }
         seccion.scrollIntoView({
             behavior: 'smooth'
         });
     })
+}
+
+function animacionesEncabezados(){
+
+    const encabezadosH3 = document.querySelectorAll('h3');
+    const encabezadosH2 = document.querySelectorAll('h2');
+
+    if(encabezadosH3){
+    
+        encabezadosH3.forEach(async h3 => {
+    
+            anime({
+                targets: h3,
+                translateY: 30,
+                direction: 'alternate',
+                loop: true,
+                easing: 'cubicBezier(.5, .05, .1, .3)'
+            });
+            
+        });
+    }
+
+    encabezadosH2.forEach(async h2 => {
+
+        anime({
+            targets: h2,
+            translateY: 30,
+            direction: 'alternate',
+            loop: true,
+            easing: 'cubicBezier(.5, .05, .1, .3)'
+        });
+        
+    });
+}
+
+function navegacionFija() {
+
+    const barra = document.querySelector('#principal');
+
+    // Registrar el Intersection Observer
+    const observer = new IntersectionObserver( entries => {
+        if(entries[0].isIntersecting) {
+            barra.classList.remove('fijo');
+        } else {
+            barra.classList.add('fijo');
+        }
+    });
+    
+    // Elemento a observar
+    if(window.location.pathname.split('/')[1] === 'index.html'){
+        observer.observe(document.querySelector('.slidebar-principal'));
+    }
+    if(window.location.pathname.split('/')[3] === 'catalogo.html'){
+        observer.observe(document.querySelector('.seccion-catalogos h2'));
+    }
+    if(window.location.pathname.split('/')[3] === 'terminos.html'){
+        observer.observe(document.querySelector('.seccion-terminos h2'));
+    }
+    if(window.location.pathname.split('/')[3] === 'contacto.html'){
+        observer.observe(document.querySelector('.seccion-contactanos h2'));
+    }
+    if(window.location.pathname.split('/')[3] === 'sesion_in.html'){
+        observer.observe(document.querySelector('.seccion-sesion-in h2'));
+    }
+    if(window.location.pathname.split('/')[3] === 'sesion.html'){
+        observer.observe(document.querySelector('.seccion-usuario h2'));
+    }
+    if(window.location.pathname.split('/')[3] === 'carrito.html'){
+        observer.observe(document.querySelector('.seccion-carrito-compras h2'));
+    }
 }

@@ -290,6 +290,10 @@ p.parrafo-notificacion{
     border: none;
 }
 
+.fijo .fixed{
+    top: 3rem;
+}
+
 @media (min-width: 1024px){
     #abrir-menu{
         display: none;
@@ -868,7 +872,7 @@ p.parrafo-notificacion{
     border-radius: 1rem;
 }
 
-.termino h3{
+.termino h4{
     background: rgba( 255, 255, 255, 0.15 );
     box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
     backdrop-filter: blur( 3.0px );
@@ -882,6 +886,7 @@ p.parrafo-notificacion{
     padding: 1rem 0;
     border-radius: 1rem 1rem 0 0;
     color: var(--dorado);
+    font-size: 2.5rem;
     text-shadow: 5px 5px var(--negro);
 }
 
@@ -1594,4 +1599,8 @@ p.parrafo-notificacion{
             width: 38%;
             height: 55rem;
     }
+}
+
+.animame{
+    display: inline-block;
 }
