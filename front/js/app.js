@@ -7,6 +7,7 @@ import { insertarProductos, cantidadProductos, agregarCarrito } from './views/v2
 import { crearUsuario, IniciarSesion } from './views/v2/sesion.js';
 import { validarSesionIniciada, iconoSesionIniciada, cerrarSesion } from './views/v2/sesion_in.js';
 import { insertarProductosCarrito, insertarTotalCarrito, insertarInformacionUsuario,agregarPedido, botonDireccionExtra } from './views/v2/carrito.js';
+import { insertarInformacionPago } from './views/v2/pago.js';
 
 
 document.addEventListener('DOMContentLoaded', async e => {
@@ -50,6 +51,9 @@ document.addEventListener('DOMContentLoaded', async e => {
         insertarInformacionUsuario();
         agregarPedido();
         botonDireccionExtra();
+    }
+    if(window.location.pathname.split('/')[3] === 'pago.html'){
+        insertarInformacionPago();
     }
 });
 
@@ -173,7 +177,7 @@ function navegacionFija() {
             barra.classList.add('fijo');
         }
     });
-    
+
     // Elemento a observar
     if(window.location.pathname.split('/')[1] === 'index.html'){
         observer.observe(document.querySelector('.slidebar-principal'));
@@ -195,5 +199,8 @@ function navegacionFija() {
     }
     if(window.location.pathname.split('/')[3] === 'carrito.html'){
         observer.observe(document.querySelector('.seccion-carrito-compras h2'));
+    }
+    if(window.location.pathname.split('/')[3] === 'productos.html'){
+        observer.observe(document.querySelector('.seccion-productos h2'));
     }
 }

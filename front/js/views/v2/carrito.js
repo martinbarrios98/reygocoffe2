@@ -14,7 +14,8 @@ const pedido = {
     },
     estado: '',
     ciudad: '',
-    postal: ''
+    postal: '',
+    envio: 300
 }
 
 export async function insertarProductosCarrito(){
@@ -128,6 +129,7 @@ export async function insertarProductosCarrito(){
 export async function insertarTotalCarrito(){
     const resultado = await JSON.parse(localStorage.getItem('carrito'));
     const contenedor = document.querySelector('#total-compra');
+    const envio = document.querySelector('#total-envio');
     let suma = 0;
 
     resultado.forEach(async producto =>{
@@ -135,6 +137,11 @@ export async function insertarTotalCarrito(){
         contenedor.textContent = `$ ${suma}`;
         contenedor.dataset.precioTotal = suma;
     });
+
+    if(suma > 1500){
+        envio.textContent = `$ ${0}`;
+        pedido.envio = 0;
+    }
 }
 
 export async function sumarCantidad(e){
@@ -267,11 +274,51 @@ export async function agregarPedido(){
 
         if(e.target.id === 'comprar'){
 
-            resultado.productos = JSON.stringify(localStorage.getItem('carrito'));
-            resultado.usuario = informacion.usuario.id;
+            resultado.productos = JSON.parse(localStorage.getItem('carrito'));
+            resultado.usuario.id = informacion.usuario.id;
             resultado.total = parseInt(total.dataset.precioTotal);
+            let error = false;
 
-            console.log(resultado);
+            Object.values(resultado).forEach( elemento => {
+
+                if(elemento === ''){
+                    error = true;
+                }
+
+            });
+
+            if(error){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'No se puede enviar campos vacios'
+                });
+            }else{
+                
+                Swal.fire({
+                    title: 'Estas segur@?',
+                    text: "Agregar informacion de pago!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '¡Si, vamos alla!'
+                  }).then((result) => {
+
+                    if (result.isConfirmed) {
+
+                        if(localStorage.getItem('pedido')){
+                            localStorage.removeItem('pedido');
+                        }
+
+                        localStorage.setItem('pedido', JSON.stringify(resultado));
+                        window.location = 'pago.html';
+
+                    }
+                })
+
+
+            }
 
         }
 

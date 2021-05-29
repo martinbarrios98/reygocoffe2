@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReygoCoffe</title>
+    <link  rel="icon"   href="../public/img/icono.png" type="image/png" />
+    <link rel="stylesheet" href="/front/css/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=KoHo&family=Lobster&family=Roboto+Slab:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="/front/css/globales.css">
+    <link rel="stylesheet" href="/front/css/leaflet.css">
+    <link rel="stylesheet" href="/front/css/v2/layout.css">
+</head>
+<body>
+
+    <header class="header-secundario" id="volver-principal">
+        <p>Inicia una conversación con nosotros al <span><i class="fab fa-whatsapp"></i></span> 932 108 11 20</p>
+        <div class="contenedor-carrito">
+            <i class="fas fa-shopping-cart"></i><p><span id="cantidad-productos-carro"></span> Productos</p>
+        </div>
+    </header>
+
+    <header class="header-principal" id="principal">
+
+        <div class="contenedor-header contenedor">
+
+            <div class="contenedor-logo">
+                <a href="../../index.html" ><h1><i class="fas fa-mug-hot"></i> Reygo<span>Coffe</span></h1></a>
+            </div>
+    
+            <div class="contenedor-nav">
+                <i class="fas fa-bars" id="abrir-menu" ></i>
+                <i class="fas fa-times" id="cerrar-menu" ></i>
+                <nav class="nav-principal">
+                    <a href="/front/v2/nosotros.html">Nosotros</a>
+                    <a href="/front/v2/catalogo.html">Catálogo</a>
+                    <a href="/front/v2/terminos.html">Terminos</a>
+                    <a href="/front/v2/contacto.html">Contacto</a>
+                    <a href="./sesion_in.html"><i class="fas fa-user"></i></a>
+                </nav>
+            </div>
+
+
+        </div>
+
+    </header>
+
+
+    <section class="seccion-metodo-pago">
+
+        <h2>Metodo de Pago</h2>
+
+        <div class="contenedor-metodo-pago contenedor">
+
+            <div class="card">
+                <button class="proceed">
+                    <svg class="sendicon" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+                    </svg>
+                </button>
+                <div class="logo-card">
+                    <img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png">
+                </div>
+                <div class="campo primer">
+                    <label>Numero de Tarjeta:</label>
+                    <input id="tarjeta-usuario" type="text" class="input cardnumber"  placeholder="0000 0000 0000 0000">
+                </div>
+                <div class="campo segundo">
+                    <label>Nombre:</label>
+                    <input class="input name"  placeholder="Edgar Pérez" id="nombre-tarjeta">
+                </div>
+                <div class="campo tercero">
+                    <label class="toleft">CCV:</label>
+                    <input class="input toleft ccv" placeholder="321" id="ccv-usuario">
+                </div>
+                <div class="campo cuarto">
+                    <label>Expiración:</label>
+                    <div class="input-expiracion">
+                        <input type="number" max="2" id="mes-expiracion" placeholder="00">
+                        <span>/</span>
+                        <input type="number" max="2" id="año-expiracion" placeholder="00">
+                    </div>
+                </div>
+            </div>
+
+            <div class="receipt">
+                <div class="col">
+                    <p class="titulo-detalle">Total:</p>
+                    <h4  id="total-compra" class="total"></h4>
+                    <p class="titulo-detalle" >Informacion:</p>
+                    <h4 class="nombre-usuario" id="nombre-usuario"></h4>
+                    <h4 class="direccion-usuario" id="direccion-usuario"></h4>
+                    <h4 class="direccion-usuario" id="localidad-usuario"></h4>
+                </div>
+                <div class="col">
+                    <p class="titulo-detalle">Detalles Compra:</p>
+                    <div class="contenedor-detalles-compra">
+
+                    </div>
+                </div>
+                <p class="comprobe">Esta información sera enviada a tu correo y emitida por un accesor que se comunicara con usted al completar la compra</p>
+            </div>
+
+          </div>
+
+    </section>
+    
+    <div class="contenedor-volver">
+        <a href="#volver-principal"><i class="fas fa-chevron-up"></i> Volver a Principio</a>
+    </div>
+
+    <footer class="footer-principal">
+
+      <p>Todos los derechos reservados &copy; <span>ReygoCafé</span></p>
+
+      <div class="contenedor-nav-redes">
+          <nav class="redes-sociales">
+              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </nav>
+      </div>
+
+    </footer>
+    
+    <script src="../js/animacion/anime.min.js"></script>
+    <script src="../js/map/leaflet.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://kit.fontawesome.com/bcebffb9a4.js" crossorigin="anonymous"></script>
+    <script type="module" src="../js/app.js"></script>
+
+</body>
+</html>

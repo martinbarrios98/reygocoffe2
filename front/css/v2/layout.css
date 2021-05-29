@@ -17,6 +17,8 @@
     --amarilloBarra: #FFC700;
     --grisBarra: #E8E8E8;
     --dorado: #efb810;
+    --card-color: #cacaca;
+    --text-color: #e1e1e1;
 
     --telefono: 320px;
     --telefonoIOS: 410px;
@@ -1514,6 +1516,16 @@ p.parrafo-notificacion{
     font-weight: var(--bold);
 }
 
+.dirigir{
+    text-align: center;
+}
+
+.dirigir a{
+    color: var(--blanco);
+    text-decoration: underline;
+    font-weight: var(--bold);
+}
+
 
 
 @media(min-width:1024px){
@@ -1604,3 +1616,260 @@ p.parrafo-notificacion{
 .animame{
     display: inline-block;
 }
+
+/** METODO PAGO **/
+
+.seccion-metodo-pago {
+    margin: 5rem 0;
+}
+
+.seccion-metodo-pago h2{
+    font-size: 6rem;
+    text-shadow: 5px 5px var(--verde);
+    text-align: left;
+    max-width: 120rem;
+    margin: 3rem auto;
+    width: 95%;
+}
+
+.contenedor-metodo-pago{
+    margin-top: 5rem;
+}
+
+.card{
+  background:#16181a;  
+  border-radius:1.4rem; 
+  max-width: 35rem; 
+  display:flex; 
+  margin:auto;
+  padding:1rem;
+  box-shadow: 2px 10px 40px black; 
+  z-index: 1;
+  flex-wrap: wrap;
+  flex-direction: row;
+  position: relative;
+}
+
+.logo-card{
+    flex-basis: 100%;
+}
+
+.logo-card img{
+    width: 5rem;
+}
+
+.card .campo{
+    margin: 0;
+}
+
+.card .campo label{
+    font-size: 1.3rem; 
+    color:white; 
+    opacity:.4;
+}
+
+.card .campo input{
+    background:transparent;
+    border: none;
+    border-bottom:1px solid #1abc9c; 
+    outline:none; 
+    color:#dbdce0; 
+    transition: border-bottom .4s;
+    font-size: 1.3rem;
+    border-radius: 0;
+    width: 100%;
+}
+
+.primer{
+    flex-basis: 100%;
+}
+
+.segundo{
+    flex-basis: calc(70% - 1rem);
+}
+
+.tercero{
+    flex-basis: 30%;
+    margin-left: .3rem!important;
+    text-align: center;
+}
+
+.tercero input::placeholder{
+    text-align: center;
+}
+
+.cuarto{
+    flex-basis: 50%;
+}
+
+.cardnumber{
+    display:block; 
+    font-size:20px; 
+    margin-bottom:8px;
+}
+
+.name{
+    display:block; 
+    font-size:15px; 
+    max-width: 200px; 
+    float:left; 
+    margin-bottom:15px;
+}
+
+.ccv{
+    width:50px; 
+    margin-top:-5px; 
+    font-size:15px;
+}
+
+.input-expiracion{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-expiracion span{
+    margin: 0 1rem;
+    color: var(--blanco);
+}
+
+.receipt{
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 12%);
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7.5px );
+    -webkit-backdrop-filter: blur( 7.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-radius:4px; 
+    padding:5%; 
+    padding-top:200px; 
+    max-width:600px; 
+    display:block; 
+    margin:auto; 
+    margin-top:-180px; 
+    z-index:-999; 
+    position:relative;
+}
+
+.col{
+    margin: 3rem 0;
+}
+.bought-item{
+    background:#f5f5f5; 
+    padding:2px;
+}
+.bought-items{
+    margin-top:-3px;
+}
+
+.cost{
+    color:#3a7bd5;
+}
+
+.total{
+    color: #1abc9c;
+    text-align: left;
+    font-size: 2rem;
+    font-family: var(--fuente_principal);
+    font-weight: var(--superDelgada);
+}
+
+.nombre-usuario{
+    color: #1abc9c;
+    text-align: left;
+    font-size: 2rem;
+    font-family: var(--fuente_principal);
+    font-weight: var(--superDelgada);
+}
+
+.direccion-usuario{
+    color: #1abc9c;
+    text-align: left;
+    font-size: 2rem;
+    font-family: var(--fuente_principal);
+    font-weight: var(--superDelgada);
+}
+
+.referencias{
+    text-shadow: 3px 3px var(--rojoBajo);
+}
+
+.description{
+    font-size: 13px;
+}
+
+.price{
+    font-size:12px;
+}
+
+.comprobe{
+    text-align:center;
+    font-weight: var(--superDelgada);
+    font-size: 1.5rem;
+    line-height: 3rem;
+    text-decoration: underline;
+    margin: 3rem 0;
+}
+
+.proceed{
+    position:absolute; 
+    transform:translate(300px, 10px); 
+    width:50px; height:50px; 
+    border-radius:50%; 
+    background:#1abc9c; 
+    border:none;
+    color:white; 
+    transition: box-shadow .2s, transform .4s; cursor:pointer;
+    bottom: 3rem;
+    right: 35rem;
+}
+.proceed:active{
+    outline:none; 
+}
+.proceed:focus{
+    outline:none;box-shadow: inset 0px 0px 5px white;
+}
+.sendicon{
+    filter:invert(100%); padding-top:2px;
+}
+
+.titulo-detalle{
+    font-weight: var(--bold);
+}
+
+.contenedor-detalles-compra{
+    text-align: left;
+}
+
+.info-producto{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2rem 0;
+    border-bottom: 1px solid var(--blanco);
+    padding-bottom: 1rem;
+}
+
+.info-producto:last-of-type{
+    border-bottom: none;
+}
+
+.info-producto img{
+    width: 10rem;
+    height: 10rem;
+    flex-basis: 20%;
+    border-radius: 1rem;
+}
+
+.detalle{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-basis: 80%;
+}
+
+.detalle p{
+    font-size: 1.7rem
+}
+
