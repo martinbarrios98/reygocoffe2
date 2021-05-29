@@ -1,5 +1,5 @@
 import { alertaNotificacion } from '../emergentes/emergentes.js';
-import { validarNombre, validarApellido, validarCorreo, validarPassword, validarDireccion, validarTelefono, validarCiudad, validarEstado, validarPostal, validarDireccionExtra, validarReferencias  } from './validacionesInputs.js';
+import { validarNombre, validarApellido, validarCorreo, validarPassword, validarDireccion, validarTelefono, validarCiudad, validarEstado, validarPostal, validarDireccionExtra, validarReferencias, validarTarjeta, validarExpiracionMes, validarExpiracionAño, validarCCV  } from './validacionesInputs.js';
 
 const usuario = {
     nombre: '',
@@ -15,6 +15,15 @@ const sesion = {
     password: ''
 }
 
+const tarjeta = {
+    numero: '',
+    nombre: '',
+    ccv: '',
+    expiracion:{
+        año: '',
+        mes: ''
+    }
+}
 
 export async function validacionesUsuario (){
 
@@ -88,5 +97,23 @@ export async function validacionesPedido(objeto){
     validarPostal(inputPostal, objeto);
 
     return objeto;
+
+}
+
+export async function validacionesTarjeta(){
+
+    const inputTarjeta = document.querySelector('#tarjeta-usuario');
+    const inputNombre = document.querySelector('#nombre-tarjeta')
+    const inputCCV = document.querySelector('#ccv-usuario');
+    const inputExpiracionAño = document.querySelector('#año-expiracion');
+    const inputExpiracionMes = document.querySelector('#mes-expiracion');
+
+    validarTarjeta(inputTarjeta, tarjeta);
+    validarNombre(inputNombre, tarjeta);
+    validarCCV(inputCCV, tarjeta);
+    validarExpiracionAño(inputExpiracionAño, tarjeta);
+    validarExpiracionMes(inputExpiracionMes, tarjeta);
+
+    return tarjeta;
 
 }

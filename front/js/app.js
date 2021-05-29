@@ -7,7 +7,7 @@ import { insertarProductos, cantidadProductos, agregarCarrito } from './views/v2
 import { crearUsuario, IniciarSesion } from './views/v2/sesion.js';
 import { validarSesionIniciada, iconoSesionIniciada, cerrarSesion } from './views/v2/sesion_in.js';
 import { insertarProductosCarrito, insertarTotalCarrito, insertarInformacionUsuario,agregarPedido, botonDireccionExtra } from './views/v2/carrito.js';
-import { insertarInformacionPago } from './views/v2/pago.js';
+import { insertarInformacionPago, pagarPedido } from './views/v2/pago.js';
 
 
 document.addEventListener('DOMContentLoaded', async e => {
@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', async e => {
     }
     if(window.location.pathname.split('/')[3] === 'pago.html'){
         insertarInformacionPago();
+        pagarPedido();
     }
 });
 

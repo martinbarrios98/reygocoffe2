@@ -1,6 +1,7 @@
 import { verificarLength } from '../../utilidades/verificaciones.js';
 import { alertaNotificacion } from '../../emergentes/emergentes.js';
 import { obtenerProducto, obtenerUsuario } from '../../consultas/v2/consultas.js';
+import { validacionesTarjeta } from '../../validaciones/validaciones.js';
 
 export async function insertarInformacionPago(){
 
@@ -67,5 +68,59 @@ export async function insertarInformacionPago(){
 
     });
 
+
+}
+
+export async function pagarPedido (){
+
+    const boton = document.querySelector('.proceed');
+    const tarjeta = await validacionesTarjeta();
+
+    boton.addEventListener('click', e =>{
+
+        e.preventDefault();
+        let error = false;
+
+        Object.values(tarjeta).forEach( elemento => {
+
+            if(elemento === ''){
+                 error = true;
+            }
+
+        });
+
+        if(error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'No se puede enviar campos vacios'
+            });
+        }else{
+            
+            Swal.fire({
+                title: 'Estas segur@?',
+                text: "Se procedera a realizar el pago!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Pagar!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'info',
+                        title: 'Validando pago, espere un momento porfavor ...',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+
+                }
+            })
+
+        }
+
+    });
 
 }
