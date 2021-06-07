@@ -290,3 +290,165 @@ export function validarExpiracionMes (input, objeto){
 
     });
 }
+
+export function validarURL (input, objeto){
+
+    const widget = cloudinary.createUploadWidget({
+        cloudName: 'data-warehouse', 
+        uploadPreset: 'zyxmqyhe'
+    }, (error, result) => { 
+          if (!error && result && result.event === "success") { 
+            objeto.url = result.info.secure_url;
+            const imagen = document.querySelector('#imagen-subida');
+            imagen.src = result.info.secure_url;
+          }
+    });
+
+    input.addEventListener('click', e => {
+        widget.open();
+    });
+
+}
+
+export function validarURLEditar (input, objeto){
+
+    const widget = cloudinary.createUploadWidget({
+        cloudName: 'data-warehouse', 
+        uploadPreset: 'zyxmqyhe'
+    }, (error, result) => { 
+          if (!error && result && result.event === "success") { 
+            objeto.url = result.info.secure_url;
+            const imagen = document.querySelector('#imagen-subida-url');
+            imagen.src = result.info.secure_url;
+          }
+    });
+
+    input.addEventListener('click', e => {
+        widget.open();
+    });
+
+}
+
+export function validarPrecio(input, objeto){
+    input.addEventListener('input', e => {
+
+        if(e.target.value === ''){
+
+            alertaNotificacion('Error de validacion', 'Este campo no puede ir vacio', 'error');
+            objeto.precio = '';
+
+        }else{
+
+            const estadoTexto = e.target.value.trim();
+            alertaNotificacion('Validacion Correcta', 'Precio agregado correctamente', 'exito');
+            objeto.precio = estadoTexto;
+
+        }
+
+    });
+}
+
+export function validarDescripcion (input, objeto){
+
+    input.addEventListener('input', e => {
+
+        if(e.target.value === '' || e.target.value < 5){
+
+            alertaNotificacion('Error de validacion', 'Este campo no puede ir vacio', 'error');
+            objeto.descripcion = '';
+
+        }else{
+
+            const estadoTexto = e.target.value.trim();
+            alertaNotificacion('Validacion Correcta', 'Descripcion validado correctamente', 'exito');
+            objeto.descripcion = estadoTexto;
+
+        }
+
+    });
+
+}
+
+export function validarCategoria(input, objeto){
+
+    input.addEventListener('input', e => {
+
+        if(e.target.value === ''){
+
+            alertaNotificacion('Error de validacion', 'Este campo no puede ir vacio', 'error');
+            objeto.categoria = '';
+
+        }else{
+
+            const estadoTexto = e.target.value.trim();
+            alertaNotificacion('Validacion Correcta', 'Categoria validado correctamente', 'exito');
+            objeto.categoria = estadoTexto;
+
+        }
+
+    });
+
+}
+
+export function validarNumeroGuia(input, objeto){
+
+    input.addEventListener('input', e => {
+
+        if(e.target.value === '' || e.target.value.length < 5){
+
+            alertaNotificacion('Error de validacion', 'Este campo no puede ir vacio', 'error');
+            objeto.numero_guia = '';
+
+        }else{
+
+            const estadoTexto = e.target.value.trim();
+            alertaNotificacion('Validacion Correcta', 'Numero de guia validado correctamente', 'exito');
+            objeto.numero_guia = estadoTexto;
+
+        }
+
+    });
+
+}
+
+export function validarPaqueteria(input, objeto){
+
+    input.addEventListener('input', e => {
+
+        if(e.target.value === ''){
+
+            alertaNotificacion('Error de validacion', 'Este campo no puede ir vacio', 'error');
+            objeto.paqueteria = '';
+
+        }else{
+
+            const estadoTexto = e.target.value.trim();
+            alertaNotificacion('Validacion Correcta', 'Paqueteria validado correctamente', 'exito');
+            objeto.paqueteria = estadoTexto;
+
+        }
+
+    });
+
+}
+
+export function validarEstadoPedido(input, objeto){
+
+    input.addEventListener('input', e => {
+
+        if(e.target.value === ''){
+
+            alertaNotificacion('Error de validacion', 'Este campo no puede ir vacio', 'error');
+            objeto.estado_pedido = '';
+
+        }else{
+
+            const estadoTexto = e.target.value.trim();
+            alertaNotificacion('Validacion Correcta', 'Estado del Pedido validado correctamente', 'exito');
+            objeto.estado_pedido = estadoTexto;
+
+        }
+
+    });
+
+}

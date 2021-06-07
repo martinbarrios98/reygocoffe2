@@ -77,6 +77,10 @@ p.parrafo-notificacion{
     color: var(--verde);
 }
 
+.centrado{
+    text-align: center;
+}
+
 /** BOTONES **/
 
 .contenedor-volver{
@@ -1244,6 +1248,50 @@ p.parrafo-notificacion{
     }
 }
 
+.contenedor-pedido{
+    margin: 5rem 0;
+    max-height: 7rem;
+    overflow: hidden;
+    border: 2px solid var(--blanco);
+    border-radius: 1rem;
+    padding: 0 1rem;
+    transition: all .3s ease-in-out;
+}
+
+.contenedor-pedido p{
+    font-size: 1.8rem;
+}
+
+.contenedor-pedido h4{
+    font-size: 2.5rem;
+    text-align: left;
+}
+
+.detalles-secundarios span{
+    color: var(--verde);
+}
+
+.detalles-productos p{
+    padding-left: 1rem;
+}
+
+.detalles-productos p:first-of-type{
+    font-size: 2rem ;
+    font-weight: var(--bold);
+    padding: 0;
+}
+
+.denegacion-pedido{
+    margin: 5rem 0;
+    display: grid;
+    place-items: center;
+}
+
+.denegacion-pedido i {
+    font-size: 10rem;
+    color: var(--blanco);
+}
+
 /** VENTANAS **/
 
 /** usuarios **/
@@ -1742,13 +1790,10 @@ p.parrafo-notificacion{
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     border-radius:4px; 
-    padding:5%; 
-    padding-top:200px; 
-    max-width:600px; 
+    padding:2rem; 
+    max-width:80rem; 
     display:block; 
-    margin:auto; 
-    margin-top:-180px; 
-    z-index:-999; 
+    margin:auto;  
     position:relative;
 }
 
@@ -1856,8 +1901,8 @@ p.parrafo-notificacion{
 }
 
 .info-producto img{
-    width: 10rem;
-    height: 10rem;
+    width: 15rem;
+    height: 15rem;
     flex-basis: 20%;
     border-radius: 1rem;
 }
@@ -1873,3 +1918,33 @@ p.parrafo-notificacion{
     font-size: 1.7rem
 }
 
+/** SUCCESS HTML **/
+
+.seccion-confirmacion-pago{
+    margin: 5rem 0;
+}
+
+.seccion-confirmacion-pago h2{
+    font-size: 6rem;
+    text-align: left;
+    max-width: 120rem;
+    margin: 2rem auto;
+    width: 95%;
+    text-shadow: 5px 5px var(--azulBajo);
+}
+
+.contenedor-mensaje{
+    margin: 4rem 0;
+    display: grid;
+    place-items: center;
+    padding: 5rem 2rem;
+}
+
+.contenedor-mensaje p{
+    text-align: center;
+    line-height: 3rem;
+}
+.contenedor-mensaje i {
+    font-size: 4rem;
+    color: var(--blanco);
+}

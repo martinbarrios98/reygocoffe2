@@ -1,0 +1,35 @@
+
+
+{
+    "method": "post",
+    "url": "https://prod.api.firstdata.com/ipp/payments-gateway/v2/payments",
+    "headers": {
+      "Content-Type": "application/json",
+      "Client-Request-Id": "",
+      "Api-Key": "",
+      "Timestamp": "",
+      "Message-Signature": ""
+    },
+    "body": {
+      "requestType": "PaymentCardSaleTransaction",
+      "transactionAmount": {
+        "total": "12.04",
+        "currency": "USD"
+      },
+      "paymentMethod": {
+        "paymentCard": {
+          "number": "5424180279791732",
+          "securityCode": "977",
+          "expiryDate": {
+            "month": "12",
+            "year": "24"
+          }
+        }
+      },
+      "authenticationRequest": {
+        "authenticationType": "Secure3D21AuthenticationRequest",
+        "termURL": "http://localhost:3124/api/v1/payments/3ds",
+        "challengeIndicator": "04"
+      }
+    }
+  }

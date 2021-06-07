@@ -2,7 +2,8 @@ import { alertaNotificacion } from '../../emergentes/emergentes.js';
 import { ventanaUsuarioEditar } from '../../emergentes/ventanas.js';
 import { validacionesUsuarioEditar } from '../../validaciones/validaciones.js';
 import { edicionUsuario } from '../../consultas/v2/editor.js';
-import { obtenerUsuario } from '../../consultas/v2/consultas.js';
+import { obtenerUsuario, obtenerPedidosUsuario } from '../../consultas/v2/consultas.js';
+import { verificarLength } from '../../utilidades/verificaciones.js';
 
 
 export async function iconoSesionIniciada(){
@@ -252,6 +253,148 @@ export async function editarInformacion( objeto ){
 
         }
 
+    });
+
+}
+
+export async function obtenerInformacionPedidoUsuario(){
+    
+    const sesion = JSON.parse(localStorage.getItem('sesion_in'));
+    const identificadorUsuario = sesion.usuario.id;
+    const resultado = await obtenerPedidosUsuario(identificadorUsuario);
+    const contenedor = document.querySelector('.contenido-pedidos');
+
+    const verificacion = await verificarLength(resultado);
+    console.log(resultado.length);
+    if(resultado.length === 0){
+
+
+
+        const parrafoDenegacion = document.createElement('div');
+        parrafoDenegacion.classList.add('denegacion-pedido');
+        parrafoDenegacion.innerHTML = `
+            <i class="fab fa-accusoft"></i>
+            <p>¡Aun no tiene pedidos realizados!</p>`
+        ;
+
+        contenedor.appendChild(parrafoDenegacion);
+
+    }else{
+
+        resultado.forEach(async pedido => {
+
+            const { id , ciudad, estado, estado_pedido, direccion, usuario, modalidad, numero_guia, paqueteria, postal, referencias, envio, productos, total } = pedido;
+            const { informacionUsuario, direccion_extra } = usuario;
+            const { nombre, apellido, correo } = informacionUsuario; 
+
+            const contenedorPedido = document.createElement('div');
+            contenedorPedido.classList.add('contenedor-pedido');
+            contenedorPedido.dataset.idPedido = id;
+
+            const encabezado = document.createElement('h4');
+            encabezado.textContent = `Pedido #${id}`;
+
+            //Detalles Primarios
+            const contenedorDetallesPrimarios = document.createElement('div');
+            contenedorDetallesPrimarios.classList.add('detalles-primarios');
+
+            const parrafoNombre = document.createElement('p');
+            parrafoNombre.textContent = `${nombre} ${apellido}`;
+            
+            const parrafoCorreo  = document.createElement('p');
+            parrafoCorreo.textContent = `${correo}`;
+
+            const parrafoCiudad = document.createElement('p');
+            parrafoCiudad.textContent = `${ciudad}`;
+
+            const parrafoEstado = document.createElement('p');
+            parrafoEstado.textContent = `${estado}`;
+            
+            const parrafoDireccionEntrega = document.createElement('p');
+            if(direccion_extra === ''){
+                parrafoDireccionEntrega.innerHTML = `${direccion}-${referencias}-#${postal}`;
+            }else{
+                parrafoDireccionEntrega.textContent = `${direccion_extra}-${referencias}-#${postal}`;
+            }
+
+            contenedorDetallesPrimarios.appendChild(parrafoNombre);
+            contenedorDetallesPrimarios.appendChild(parrafoCorreo);
+            contenedorDetallesPrimarios.appendChild(parrafoCiudad);
+            contenedorDetallesPrimarios.appendChild(parrafoEstado);
+            contenedorDetallesPrimarios.appendChild(parrafoDireccionEntrega);
+
+            //Detalles Secundarios
+
+            const contenedorDetallesSecundarios = document.createElement('div');
+            contenedorDetallesSecundarios.classList.add('detalles-secundarios');
+
+            const parrafoTotal = document.createElement('p');
+            parrafoTotal.textContent = `Total: $${(parseInt(total)+parseInt(envio))}`;
+
+            const estadoPedido = document.createElement('p');
+            estadoPedido.innerHTML = `Estado de Pedido: <span>${estado_pedido}</span>`;
+
+            const parrafoModalidad = document.createElement('p');
+            parrafoModalidad.textContent = `Modo de envio : ${modalidad}`;
+
+            const parrafoNumeroGuia  = document.createElement('p');
+            parrafoNumeroGuia.innerHTML = `Numero Guia: <span>${numero_guia}</span>`;
+
+            const parrafoPaqueteria = document.createElement('p');
+            parrafoPaqueteria.innerHTML = `Paqueteria: <span>${paqueteria}</span>`;
+
+            contenedorDetallesSecundarios.appendChild(parrafoTotal);
+            contenedorDetallesSecundarios.appendChild(estadoPedido);
+            contenedorDetallesSecundarios.appendChild(parrafoModalidad);
+            contenedorDetallesSecundarios.appendChild(parrafoNumeroGuia);
+            contenedorDetallesSecundarios.appendChild(parrafoPaqueteria);
+
+            const contenedorDetallesProductos = document.createElement('div');
+            contenedorDetallesProductos.classList.add('detalles-productos');
+
+            const encabezadoDetallesProductos = document.createElement('p');
+            encabezadoDetallesProductos.textContent = 'Lista de Productos';
+
+            contenedorDetallesProductos.appendChild(encabezadoDetallesProductos);
+            productos.forEach(async producto => {
+                const { informacionProducto, cantidad, precio } = producto;
+
+                const nombreParrafoProducto = informacionProducto.nombre;
+
+                const parrafoProducto = document.createElement('p');
+                parrafoProducto.innerHTML = `${cantidad}x <span>${nombreParrafoProducto}</span>`;
+
+                contenedorDetallesProductos.appendChild(parrafoProducto);
+
+            });
+
+            contenedorPedido.appendChild(encabezado);
+            contenedorPedido.appendChild(contenedorDetallesPrimarios);
+            contenedorPedido.appendChild(contenedorDetallesSecundarios);
+            contenedorPedido.appendChild(contenedorDetallesProductos);
+
+            contenedor.appendChild(contenedorPedido);
+
+            scrollPedidos(contenedorPedido);
+
+        });
+
+
+
+    }
+
+
+
+}
+
+async function scrollPedidos(contenedor){
+    
+    contenedor.addEventListener('mouseover', ()=>{
+        contenedor.style.maxHeight = `${contenedor.scrollHeight}px`;
+    });
+
+    contenedor.addEventListener('mouseleave', e =>{
+        contenedor.style.maxHeight = `70px`;
     });
 
 }

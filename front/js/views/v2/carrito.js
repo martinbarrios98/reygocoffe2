@@ -3,6 +3,7 @@ import { alertaNotificacion } from '../../emergentes/emergentes.js';
 import { obtenerProducto, obtenerUsuario } from '../../consultas/v2/consultas.js';
 import { validacionesPedido } from '../../validaciones/validaciones.js';
 import { ventanaImagenMax } from '../../emergentes/emergentes.js';
+import { accesoToken, crearPedido } from '../../consultas/v2/pagos.js';
 
 const pedido = {
     productos:'',
@@ -303,14 +304,14 @@ export async function agregarPedido(){
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
                     confirmButtonText: '¡Si, vamos alla!'
-                  }).then((result) => {
+                  }).then(async (result) => {
 
                     if (result.isConfirmed) {
 
                         if(localStorage.getItem('pedido')){
                             localStorage.removeItem('pedido');
                         }
-
+                        
                         localStorage.setItem('pedido', JSON.stringify(resultado));
                         window.location = 'pago.html';
 

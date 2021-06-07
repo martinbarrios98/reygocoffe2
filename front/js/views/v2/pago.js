@@ -2,6 +2,7 @@ import { verificarLength } from '../../utilidades/verificaciones.js';
 import { alertaNotificacion } from '../../emergentes/emergentes.js';
 import { obtenerProducto, obtenerUsuario } from '../../consultas/v2/consultas.js';
 import { validacionesTarjeta } from '../../validaciones/validaciones.js';
+import { accesoToken, crearPedido } from '../../consultas/v2/pagos.js';
 
 export async function insertarInformacionPago(){
 
@@ -73,29 +74,14 @@ export async function insertarInformacionPago(){
 
 export async function pagarPedido (){
 
-    const boton = document.querySelector('.proceed');
-    const tarjeta = await validacionesTarjeta();
+    const boton = document.querySelector('#pagar');
+    //const tarjeta = await validacionesTarjeta();
 
-    boton.addEventListener('click', e =>{
+    boton.addEventListener('click', async e =>{
 
         e.preventDefault();
-        let error = false;
 
-        Object.values(tarjeta).forEach( elemento => {
-
-            if(elemento === ''){
-                 error = true;
-            }
-
-        });
-
-        if(error){
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'No se puede enviar campos vacios'
-            });
-        }else{
+        if(e.target.id === 'pagar'){
             
             Swal.fire({
                 title: 'Estas segur@?',
@@ -105,15 +91,33 @@ export async function pagarPedido (){
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Pagar!'
-              }).then((result) => {
+              }).then(async (result) => {
                 if (result.isConfirmed) {
-                    
+
+                    const objeto = {
+                        pedido: localStorage.getItem('pedido')
+                    }
+
                     Swal.fire({
                         position: 'top-end',
                         icon: 'info',
                         title: 'Validando pago, espere un momento porfavor ...',
                         showConfirmButton: false,
-                        timer: 2000
+                        timer: 3000
+                    });
+
+                    const resultado = await crearPedido(objeto);
+                    console.log(resultado);
+                    const { res } = resultado;
+
+                    const { links } = res.payment;
+
+                    links.forEach(async elemento =>{
+
+                        if(elemento.rel === 'approval_url'){
+                            window.location = elemento.href;
+                        }
+
                     });
 
                 }

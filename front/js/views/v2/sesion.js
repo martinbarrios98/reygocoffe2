@@ -2,10 +2,12 @@ import { alertaNotificacion } from '../../emergentes/emergentes.js';
 import { validacionesUsuario, validacionesSesion } from '../../validaciones/validaciones.js';
 import { creacionUsuario } from '../../consultas/v2/creador.js';
 import { sesionUsuario } from '../../consultas/v2/sesion.js';
+import { obtenerUsuarios } from '../../consultas/v2/consultas.js';
 
 
 export async function crearUsuario(){
 
+    const arregloUsuarios = await obtenerUsuarios();
     const boton = document.querySelector('#agregar');
     const usuario = await validacionesUsuario();
 
@@ -14,6 +16,25 @@ export async function crearUsuario(){
         if(e.target.id === 'agregar'){
 
             e.preventDefault();
+            let validacion = true;
+
+            arregloUsuarios.forEach(async user => {
+                if(user.correo === usuario.correo){
+                    validacion = false;
+                }
+            });
+
+            if(!validacion || validacion === false){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: `Ya se encuentre registrado este correo`,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                return;
+            }
+            
             Swal.fire({
                 title: 'Estas seguro de realizar esta accion?',
                 text: "Se creara tu registro!",

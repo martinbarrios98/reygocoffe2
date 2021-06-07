@@ -5,9 +5,10 @@ import { sliderPrincipal, insertarUltimosProductos } from './views/v2/inicio.js'
 import { verCategorias} from './views/v2/catalogo.js';
 import { insertarProductos, cantidadProductos, agregarCarrito } from './views/v2/productos.js';
 import { crearUsuario, IniciarSesion } from './views/v2/sesion.js';
-import { validarSesionIniciada, iconoSesionIniciada, cerrarSesion } from './views/v2/sesion_in.js';
+import { validarSesionIniciada, iconoSesionIniciada, cerrarSesion, obtenerInformacionPedidoUsuario } from './views/v2/sesion_in.js';
 import { insertarProductosCarrito, insertarTotalCarrito, insertarInformacionUsuario,agregarPedido, botonDireccionExtra } from './views/v2/carrito.js';
 import { insertarInformacionPago, pagarPedido } from './views/v2/pago.js';
+import { validarPago } from './views/v2/success.js';
 
 
 document.addEventListener('DOMContentLoaded', async e => {
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', async e => {
     if(window.location.pathname.split('/')[3] === 'sesion_in.html'){
         validarSesionIniciada();
         cerrarSesion();
+        obtenerInformacionPedidoUsuario();
     }
     if(window.location.pathname.split('/')[3] === 'carrito.html'){
         await insertarProductosCarrito();
@@ -53,8 +55,12 @@ document.addEventListener('DOMContentLoaded', async e => {
         botonDireccionExtra();
     }
     if(window.location.pathname.split('/')[3] === 'pago.html'){
+        //colcoarScriptPayPal();
         insertarInformacionPago();
         pagarPedido();
+    }
+    if(window.location.pathname.split('/')[3] === 'success.html'){
+        validarPago();
     }
 });
 

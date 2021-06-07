@@ -1,5 +1,5 @@
 import { alertaNotificacion } from '../emergentes/emergentes.js';
-import { validarNombre, validarApellido, validarCorreo, validarPassword, validarDireccion, validarTelefono, validarCiudad, validarEstado, validarPostal, validarDireccionExtra, validarReferencias, validarTarjeta, validarExpiracionMes, validarExpiracionAño, validarCCV  } from './validacionesInputs.js';
+import { validarNombre, validarApellido, validarCorreo, validarPassword, validarDireccion, validarTelefono, validarCiudad, validarEstado, validarPostal, validarDireccionExtra, validarReferencias, validarTarjeta, validarExpiracionMes, validarExpiracionAño, validarCCV, validarURL, validarURLEditar, validarCategoria, validarDescripcion, validarPrecio, validarEstadoPedido, validarNumeroGuia, validarPaqueteria  } from './validacionesInputs.js';
 
 const usuario = {
     nombre: '',
@@ -25,6 +25,26 @@ const tarjeta = {
     }
 }
 
+const administrador = {
+    nombre: '',
+    correo: '',
+    password: '',
+    url: ''
+}
+
+const producto = {
+    nombre: '',
+    descripcion: '',
+    precio: '',
+    url: '',
+    categoria: ''
+}
+
+const sesionAdmin = {
+    correo: '',
+    password: ''
+}
+
 export async function validacionesUsuario (){
 
     const inputNombre = document.querySelector('#nombre');
@@ -32,7 +52,7 @@ export async function validacionesUsuario (){
     const inputCorreo = document.querySelector('#correo');
     const inputPassword = document.querySelector('#password');
     const inputDireccion = document.querySelector('#direccion');
-    const inputTelefono = document.querySelector('#telefono')
+    const inputTelefono = document.querySelector('#telefono');
 
     validarNombre(inputNombre, usuario);
     validarApellido(inputApellido, usuario);
@@ -115,5 +135,100 @@ export async function validacionesTarjeta(){
     validarExpiracionMes(inputExpiracionMes, tarjeta);
 
     return tarjeta;
+
+}
+
+export async function validacionesAdministrador(){
+
+    const inputNombre = document.querySelector('#nombre');
+    const inputCorreo = document.querySelector('#correo');
+    const inputPassword = document.querySelector('#password');
+    const inputURL = document.querySelector('#imagen');
+
+    validarNombre(inputNombre, administrador);
+    validarCorreo(inputCorreo, administrador);
+    validarPassword(inputPassword, administrador);
+    validarURL(inputURL, administrador);
+
+    return administrador;
+
+}
+
+export async function validacionesAdministradorEditar( objeto ){
+
+    const inputNombre = document.querySelector('#nombre-editar');
+    const inputCorreo = document.querySelector('#correo-editar');
+    const inputPassword = document.querySelector('#password-editar');
+    const inputURL = document.querySelector('#imagen-editar');
+
+    validarNombre(inputNombre, objeto);
+    validarCorreo(inputCorreo, objeto);
+    validarPassword(inputPassword, objeto);
+    validarURLEditar(inputURL, objeto);
+
+    return objeto;
+
+}
+
+export async function validacionesProducto(){
+
+    const inputNombre = document.querySelector('#nombre');
+    const inputPrecio = document.querySelector('#precio');
+    const inputDescripcion = document.querySelector('#descripcion');
+    const inputCategoria = document.querySelector('#categoria');
+    const inputURL = document.querySelector('#imagen');
+
+    validarNombre(inputNombre, producto);
+    validarPrecio(inputPrecio, producto);
+    validarDescripcion(inputDescripcion, producto);
+    validarCategoria(inputCategoria, producto);
+    validarURL(inputURL, producto);
+
+    return producto;
+
+
+}
+
+export async function validacionesProductoEditar( objeto ){
+
+    const inputNombre = document.querySelector('#nombre-editar');
+    const inputPrecio = document.querySelector('#precio-editar');
+    const inputDescripcion = document.querySelector('#descripcion-editar');
+    const inputCategoria = document.querySelector('#categoria-editar');
+    const inputURL = document.querySelector('#imagen-editar');
+
+    validarNombre(inputNombre, objeto);
+    validarPrecio(inputPrecio, objeto);
+    validarDescripcion(inputDescripcion, objeto);
+    validarCategoria(inputCategoria, objeto);
+    validarURLEditar(inputURL, objeto);
+
+    return objeto;
+
+}
+
+export async function validacionesPedidoEditar( objeto ){
+
+    const inputNumeroGuia = document.querySelector('#numero-guia');
+    const inputPaqueteria = document.querySelector('#paqueteria');
+    const inptuEstadoPedido = document.querySelector('#estado-pedido');
+
+    validarNumeroGuia(inputNumeroGuia, objeto);
+    validarPaqueteria(inputPaqueteria, objeto);
+    validarEstadoPedido(inptuEstadoPedido, objeto);
+
+    return objeto;
+
+}
+
+export async function validacionesSesionAdmin(){
+
+    const inputCorreo = document.querySelector('#correo-iniciar');
+    const inputPassword = document.querySelector('#password-iniciar');
+
+    validarCorreo(inputCorreo, sesionAdmin);
+    validarPassword(inputPassword, sesionAdmin);
+
+    return sesionAdmin;
 
 }
