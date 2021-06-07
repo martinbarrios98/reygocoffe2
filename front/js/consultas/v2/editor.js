@@ -27,6 +27,8 @@ export async function edicionUsuario(objeto, id){
 }
 
 export async function edicionAdministrador(objeto, id){
+    const informacion = JSON.parse(localStorage.getItem('sesion_in_admin'));
+    const token = informacion.token;
     let datos = [];
     for (let property in objeto) {
     let encodedKey = encodeURIComponent(property);
@@ -39,7 +41,8 @@ export async function edicionAdministrador(objeto, id){
         mode: 'cors',
         method: 'put',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            'token': token
         },
         body: datos
     });
@@ -49,6 +52,8 @@ export async function edicionAdministrador(objeto, id){
 }
 
 export async function edicionProducto(objeto, id){
+    const informacion = JSON.parse(localStorage.getItem('sesion_in_admin'));
+    const token = informacion.token;
     let datos = [];
     for (let property in objeto) {
     let encodedKey = encodeURIComponent(property);
@@ -61,7 +66,8 @@ export async function edicionProducto(objeto, id){
         mode: 'cors',
         method: 'put',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            'token': token
         },
         body: datos
     });
@@ -71,7 +77,8 @@ export async function edicionProducto(objeto, id){
 }
 
 export async function edicionPedido(objeto, id){
-
+    const informacion = JSON.parse(localStorage.getItem('sesion_in_admin'));
+    const token = informacion.token;
     let datos = [];
     for (let property in objeto) {
     let encodedKey = encodeURIComponent(property);
@@ -84,7 +91,8 @@ export async function edicionPedido(objeto, id){
         mode: 'cors',
         method: 'put',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            'token': token
         },
         body: datos
     });

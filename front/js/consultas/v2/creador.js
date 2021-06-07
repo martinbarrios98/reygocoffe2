@@ -27,6 +27,8 @@ export async function creacionUsuario(objeto){
 }
 
 export async function creacionAdministrador (objeto) {
+    const informacion = JSON.parse(localStorage.getItem('sesion_in_admin'));
+    const token = informacion.token;
     let datos = [];
     for (let property in objeto) {
     let encodedKey = encodeURIComponent(property);
@@ -39,7 +41,8 @@ export async function creacionAdministrador (objeto) {
         mode: 'cors',
         method: 'post',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            'token': token
         },
         body: datos
     });
@@ -49,6 +52,8 @@ export async function creacionAdministrador (objeto) {
 }
 
 export async function creacionProducto(objeto){
+    const informacion = JSON.parse(localStorage.getItem('sesion_in_admin'));
+    const token = informacion.token;
     let datos = [];
     for (let property in objeto) {
     let encodedKey = encodeURIComponent(property);
@@ -61,7 +66,8 @@ export async function creacionProducto(objeto){
         mode: 'cors',
         method: 'post',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            'token': token
         },
         body: datos
     });
