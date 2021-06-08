@@ -61,6 +61,11 @@ p.parrafo-notificacion{
     text-align: center;
 }
 
+.espaciado{
+    margin: 3rem 0;
+    line-height: 3rem;
+}
+
 .visible{
     opacity: 1;
 }
@@ -335,6 +340,15 @@ p.parrafo-notificacion{
     .swiper-slide img{
         width: 100%;
         height: 60rem;
+    }
+}
+
+@media (min-width:1350px){
+    .swiper-container{
+        max-height: 80rem;
+    }
+    .swiper-slide img{
+        height: 75rem;
     }
 }
 
@@ -807,25 +821,10 @@ p.parrafo-notificacion{
     z-index: 1;
 }
 
-
-@media (min-width: 768px) {
-    .formulario-contacto {
-        margin-top: -10rem;
-        z-index: 2;
-        position: relative;
-        border-radius: 1rem;
-    }
-}
-
 @media (min-width: 1024px){
     .seccion-contactanos h2{
         font-size: 8rem;
         text-transform: uppercase;
-    }
-    .contenedor-contacto-informacion{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3rem;
     }
 }
 

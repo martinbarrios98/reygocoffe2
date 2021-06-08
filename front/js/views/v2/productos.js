@@ -106,11 +106,10 @@ export async function informacionCatProducto (identificador){
     if(nombre === 'Esencias Gialinni'){
         parrafoCate.textContent = `
 
-        Perfectos para disolver en bebidas y postres, cuidando siempre el delicioso sabor. Los puedes usar en:
-        • Tés 
-        • Frappés 
-        • Coctelería 
-        • Repostería
+        Prácticos y de gran versatilidad, se pueden usar como saborizante o salsa para decorar bebidas,
+        pos tres y alimentos, el límite es tu imaginación. Son los únicos en el mercado que no necesitan
+        refrigeración ni congelación
+       
         `;
     }
     if(nombre === 'Polvos y Bases'){
@@ -131,7 +130,14 @@ export async function informacionCatProducto (identificador){
     if(nombre === 'Café Tostado'){
         parrafoCate.textContent = `
 
-        El café tostado o café crema significa que el grano de café verde pasa por las máquinas tostadoras sin ningún agregado de azúcar. Se utiliza mucho en los bares y cafeterías. Con la tendencia saludable de consumir menos azúcar, los ojos del consumo familiar están puestos cada vez más en este tipo de café.
+        En México contamos con poco más de 12 estados productores de café, entre los
+        más conocidos están: Chiapas, Veracruz, y Oaxaca, logrando
+        calidad extraordinaria al producir cafés de especialidad.
+        Con nosotros podrás encontrar café de diferentes regiones y mezclas que harán la
+        diferencia entre tu barra de café y todas las demás. Ofreciendo un café arabica con
+        una mezcla de granos (tyoica, bourbon y caturra). logrando obtener una taza con
+        trazabilidad de
+        84.5 puntos, donde resaltan notas como achocolatado, frutales entre otras.
 
 
         `;
@@ -139,18 +145,25 @@ export async function informacionCatProducto (identificador){
     if(nombre === 'Café Verde '){
         parrafoCate.textContent = `
 
-        Somos familias productores aquí en los Altos de Chiapas, en una zona de nombre Tenejapa de la etnia Tzteltal, la producción de café es el principal medio de nuestro ingreso, cosechamos café de Altura entre los 1200 a 1600 MSNM cultivando de manera orgánica, ofrecemos en café Tostado Medio con las presentaciones de 1 kg, le damos los mejores cuidados para obtener café de calidad, seleccionando los mejores granos a mano.
+        Producido en los altos de Chiapas, en una zona de nombre tenejapa de la etnia tzeltal, donde su
+        principal medio de ingreso es la producción del café, se cosecha a una altura que van de los 1200 a
+        1600 msnm, cultivado de manera orgánica, seleccionando los mejores granos a mano por el
+        caficultor Alonzo López y familia; Dándonos así los mejores cuidados para obtener café de
+        calidad.
 
 
         `;
     }
-    if(nombre === 'Extractos Concentrados'){
+    if(nombre === 'Salsas Dulces y Extractos'){
         parrafoCate.textContent = `
 
-        Extracto del grano de café de la zona Pluma Oaxaca. El sabor de és te es uno de los mejores y de más alta calidad a nivel mundial.
-        Su aplicación es excelente para:
-            • Capuchino´s frios • Frappés • Bebidas lácteas
-            • Coctelería • Helados • Nieves • Repostería
+        Extraordinario producto, por su versatilidad lo podemos utilizar de formas tan
+        variadas y con grandes resultados que te invitamos a seguir descrubiendolas y
+        compartiendo con nosotros, los grandes beneficios que esté producto nos brinda
+        para tu negocio.
+        Su uso va desde preparar un delicioso smoothie, pasando por la decoración de
+        postres, diversos platillos, hasta su aplicación en bebidas moleculares, rellenos en
+        pastelería, endulzante de nieves a base de yogurt, etc., etc.
 
 
         `;
