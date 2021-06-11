@@ -58,7 +58,8 @@ export async function validarPago (){
             modalidad: modo,
             envio: pedidoParse.envio,
             id_transacion: identificadorTransaccion,
-            comision_paypal: transaction_fee.value
+            comision_paypal: transaction_fee.value,
+            peso: pedidoParse.peso
         }
 
         const resultado2 = await validacionPedido(objeto1);

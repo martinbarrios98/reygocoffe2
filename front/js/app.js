@@ -6,7 +6,7 @@ import { verCategorias} from './views/v2/catalogo.js';
 import { insertarProductos, cantidadProductos, agregarCarrito } from './views/v2/productos.js';
 import { crearUsuario, IniciarSesion } from './views/v2/sesion.js';
 import { validarSesionIniciada, iconoSesionIniciada, cerrarSesion, obtenerInformacionPedidoUsuario } from './views/v2/sesion_in.js';
-import { insertarProductosCarrito, insertarTotalCarrito, insertarInformacionUsuario,agregarPedido, botonDireccionExtra } from './views/v2/carrito.js';
+import { insertarProductosCarrito, insertarTotalCarrito, insertarInformacionUsuario,agregarPedido, botonDireccionExtra, estadoPedido } from './views/v2/carrito.js';
 import { insertarInformacionPago, pagarPedido } from './views/v2/pago.js';
 import { validarPago } from './views/v2/success.js';
 
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async e => {
     scrollPrincipal();
     animacionesEncabezados();
     navegacionFija();
+    dirigirWhatsApp();
 
     if(window.location.pathname.split('/')[1] === 'index.html'){
         sliderPrincipal();
@@ -53,6 +54,7 @@ document.addEventListener('DOMContentLoaded', async e => {
         insertarInformacionUsuario();
         agregarPedido();
         botonDireccionExtra();
+        estadoPedido();
     }
     if(window.location.pathname.split('/')[3] === 'pago.html'){
         //colcoarScriptPayPal();
@@ -210,4 +212,18 @@ function navegacionFija() {
     if(window.location.pathname.split('/')[3] === 'productos.html'){
         observer.observe(document.querySelector('.seccion-productos h2'));
     }
+}
+
+function dirigirWhatsApp(){
+
+    const icono = document.querySelector('.fa-whatsapp');
+
+    icono.addEventListener('click', e =>{
+
+        const url = 'https://api.whatsapp.com/send?phone=529321114351&text=¡Hola%20Quiero%20hablar%20desde%20ReygoCoffee!';
+
+        window.open(url);
+
+    });
+
 }

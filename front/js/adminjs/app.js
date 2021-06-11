@@ -5,6 +5,7 @@ import { insertarProductos, insertarOptionCategorias, agregarProducto } from '..
 import { insertarPedidos, insertarOptionFecha } from './views/pedidos.js';
 import { validacionesSesionAdmin } from '../validaciones/validaciones.js';
 import { sesionAdministrador } from '../consultas/v2/sesion.js';
+import { insertarCategorias, agregarCategorias } from './views/categorias.js';
 
 document.addEventListener('DOMContentLoaded', async e => {
 
@@ -45,11 +46,12 @@ document.addEventListener('DOMContentLoaded', async e => {
 
     }
     if(window.location.pathname.split('/')[4] === 'pedidos.html'){
-
-        
         insertarPedidos();
         insertarOptionFecha();
-
+    }
+    if(window.location.pathname.split('/')[4] === 'categorias.html'){
+        insertarCategorias();
+        agregarCategorias();
     }
 
 });

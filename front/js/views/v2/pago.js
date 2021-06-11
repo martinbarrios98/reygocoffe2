@@ -14,10 +14,11 @@ export async function insertarInformacionPago(){
     const contenedorNombreUsuario = document.querySelector('#nombre-usuario');
     const contenedorDireccionUsuario = document.querySelector('#direccion-usuario');
     const contenedorLocalidad = document.querySelector('#localidad-usuario');
+    const contenedorPesoPedido = document.querySelector('#peso-pedido');
     const contenedorProductos = document.querySelector('.contenedor-detalles-compra');
 
     const pedido = JSON.parse(localStorage.getItem('pedido'));
-    const { ciudad, estado, postal, productos, total, usuario, envio } = pedido;
+    const { ciudad, estado, postal, productos, total, usuario, envio, peso } = pedido;
     const informacionUsuario = await obtenerUsuario(usuario.id);
     const { nombre, apellido, direccion } = informacionUsuario;
     if(envio === 0){
@@ -32,6 +33,7 @@ export async function insertarInformacionPago(){
         contenedorDireccionUsuario.textContent = `${usuario.direccion_extra} - ${usuario.referencias}`;
     }
     contenedorLocalidad.textContent = `${ciudad}, ${estado} - Postal:${postal}`;
+    contenedorPesoPedido.textContent = `Peso total productos: ${Number(peso)/1000} kg`;
 
     productos.forEach(async producto =>{
 

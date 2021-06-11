@@ -561,14 +561,14 @@ p.parrafo-notificacion{
 }
 
 .contenedor-producto img{
-    flex-basis: 30%;
+    flex-basis: 40%;
     width: 10rem;
-    height: 15rem;
+    height: 19rem;
     border-radius: 1rem;
 }
 
 .detalles-producto {
-    flex-basis: 70%;
+    flex-basis: 60%;
     padding-left: 1rem;
 }
 
@@ -580,6 +580,10 @@ p.parrafo-notificacion{
 
 .contenedor-producto .contenedor-boton button{
     margin: 0 1rem;
+}
+
+.formulario-agregar-producto .contenedor-boton{
+    margin: 2rem 0;
 }
 
 /** PEDIDOS **/
@@ -691,6 +695,63 @@ p.parrafo-notificacion{
     font-size: 1.5rem;
 }
 
+/** CATEGORIAS **/
+
+.seccion-categorias{
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+}
+
+.seccion-categorias h2{
+    font-size: 8rem;
+    text-align: left;
+    text-shadow: 5px 5px var(--dorado);
+}
+
+.seccion-categorias .formulario-agregar-producto .contenedor-boton{
+    margin: 3rem 0 1rem 0;
+}
+
+.seccion-categorias .contenedor-boton{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.seccion-categorias .contenedor-boton button{
+    margin: 0 1rem;
+}
+
+.contenedor-categorias{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+    margin: 6rem 0;
+}
+
+.contenedor-categoria{
+    padding: 1rem;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 12%);
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7.5px );
+    -webkit-backdrop-filter: blur( 7.5px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-radius: 1rem;
+}
+
+.contenedor-categoria img{
+    height: 22.8rem;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.contenedor-categoria p {
+    font-weight: var(--bold);
+    margin: 1rem 0;
+}
+
 /** SESION ADMIN **/
 
 .seccion-sesion{
@@ -742,7 +803,6 @@ p.parrafo-notificacion{
 .campo {
     display: flex;
     flex-direction: column;
-    margin: 2rem 0;
 }
 
 .campo label{
@@ -854,6 +914,7 @@ p.parrafo-notificacion{
 
 .formulario-ventana .contenedor-botones{
     flex-basis: 100%;
+    margin: 2rem 0;
 }
 
 .permisos{
@@ -934,6 +995,7 @@ p.parrafo-notificacion{
 
 .ventana-producto img{
     width: 10rem;
+    height: 10rem;
     border-radius: 1rem;   
 }
 

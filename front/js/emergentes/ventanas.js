@@ -303,7 +303,7 @@ export async function ventanaAdministradorEditar( objeto ){
 export async function ventanaProductoEditar( objeto ){
 
     const contenedor = document.querySelector('body');
-    const { id, nombre, descripcion, precio, url, categoria, categoria_nombre } = objeto;
+    const { id, nombre, descripcion, precio, url, categoria, categoria_nombre, disponibilidad, peso } = objeto;
     const categorias = await descargarCategorias();
 
     const contenedorVentana = document.createElement('div');
@@ -412,6 +412,50 @@ export async function ventanaProductoEditar( objeto ){
     contenedorURL.appendChild(imagenURL);
     contenedorURL.appendChild(contenedorCampoURL);
 
+    //Campo Disponibilidad
+
+    const contenedorDisponibilidad = document.createElement('div');
+    contenedorDisponibilidad.classList.add('campo');
+    const labelDisponibilidad = document.createElement('label');
+    labelDisponibilidad.textContent = 'Categoria: ';
+    const selectDisponibilidad = document.createElement('select');
+    selectDisponibilidad.id = 'disponibilidad-editar';
+
+    const optionDefaultDisponibilidad = document.createElement('option');
+    optionDefaultDisponibilidad.textContent = 'Seleccione una opcion';
+    optionDefaultDisponibilidad.value = '';
+
+    const optionDisponible = document.createElement('option');
+    optionDisponible.textContent = 'Disponible';
+    optionDisponible.value = 'disponible';
+
+    const optionNoDisponible = document.createElement('option');
+    optionNoDisponible.textContent = 'No disponible';
+    optionNoDisponible.value = 'no disponible';
+    selectDisponibilidad.appendChild(optionDefaultDisponibilidad);
+    selectDisponibilidad.appendChild(optionDisponible);
+    selectDisponibilidad.appendChild(optionNoDisponible);
+
+    contenedorDisponibilidad.appendChild(labelDisponibilidad);
+    contenedorDisponibilidad.appendChild(selectDisponibilidad);
+
+    selectDisponibilidad.value = disponibilidad;
+
+    //Campo Peso
+
+    const contenedorPeso = document.createElement('div');
+    contenedorPeso.classList.add('campo');
+    const labelPeso = document.createElement('label');
+    labelPeso.textContent = 'Peso (g):';
+    const inputPeso = document.createElement('input');
+    inputPeso.setAttribute('type', 'text');
+    inputPeso.setAttribute('placeholder', 'Ingrese el peso del producto');
+    inputPeso.id = 'peso-editar';
+    inputPeso.value = peso;
+
+    contenedorPeso.appendChild(labelPeso);
+    contenedorPeso.appendChild(inputPeso);
+
     //BOTONES
 
     const contenedorBoton = document.createElement('div');
@@ -435,6 +479,8 @@ export async function ventanaProductoEditar( objeto ){
     contenedorFormuario.appendChild(contenedorNombre);
     contenedorFormuario.appendChild(contenedorPrecio);
     contenedorFormuario.appendChild(contenedorCategoria);
+    contenedorFormuario.appendChild(contenedorPeso);
+    contenedorFormuario.appendChild(contenedorDisponibilidad);
     contenedorFormuario.appendChild(contenedorDescripcion);
     contenedorFormuario.appendChild(contenedorBoton);
 
@@ -673,5 +719,113 @@ export async function ventanaEditarPedido( objeto ){
     }
 
     return botonEditar;
+
+}
+
+export async function ventanaCategoriaEditar( objeto ){
+
+    const { id, nombre, url } = objeto;
+
+    const contenedor = document.querySelector('body');
+
+    const contenedorVentana = document.createElement('div');
+    contenedorVentana.classList.add('ventana');
+
+    //FORMULARIO
+
+    const contenedorFormuario = document.createElement('form');
+    contenedorFormuario.classList.add('formulario-ventana');
+    contenedorFormuario.dataset.idCategoria = id;
+
+    //Encabezado Formulario
+
+    const encabezadoFormulario = document.createElement('h3');
+    encabezadoFormulario.textContent = `Editar ${nombre}`;
+
+    //Campo Nombre
+
+    const contenedorNombre = document.createElement('div');
+    contenedorNombre.classList.add('campo');
+    const labelNombrer = document.createElement('label');
+    labelNombrer.textContent = 'Nombre:';
+    const inputNombre = document.createElement('input');
+    inputNombre.setAttribute('type', 'text');
+    inputNombre.setAttribute('placeholder', 'Ingrese un nombre');
+    inputNombre.id = 'nombre-editar';
+    inputNombre.value = nombre;
+
+    contenedorNombre.appendChild(labelNombrer);
+    contenedorNombre.appendChild(inputNombre);
+
+    //Campo URL de Imagenes
+
+    const contenedorURL = document.createElement('div');
+    contenedorURL.classList.add('subir-imagen');
+    const imagenURL = document.createElement('img');
+    imagenURL.src = url;
+    imagenURL.id = 'imagen-subida-url';
+    const contenedorCampoURL = document.createElement('div');
+    contenedorCampoURL.classList.add('campo-imagen');
+    const labelURL = document.createElement('label');
+    labelURL.textContent = 'Seleccione una imagen :';
+    const botonImagen = document.createElement('button');
+    botonImagen.type = 'button';
+    botonImagen.id = 'imagen-editar';
+    botonImagen.classList.add('boton', 'boton-normal');
+    botonImagen.textContent = 'Editar Imagen';
+
+    contenedorCampoURL.appendChild(labelURL);
+    contenedorCampoURL.appendChild(botonImagen);
+
+    contenedorURL.appendChild(imagenURL);
+    contenedorURL.appendChild(contenedorCampoURL);
+
+    //BOTONES
+
+    const contenedorBoton = document.createElement('div');
+    contenedorBoton.classList.add('contenedor-botones');
+
+    const botonEditar = document.createElement('button');
+    botonEditar.textContent = 'Editar';
+    botonEditar.classList.add('boton', 'boton-editar');
+    botonEditar.id = 'confirmar-editar';
+
+    const botonCancelar = document.createElement('button');
+    botonCancelar.textContent = 'Cancelar';
+    botonCancelar.classList.add('boton', 'boton-eliminar');
+    botonCancelar.id = 'cancelar';
+
+    contenedorBoton.appendChild(botonEditar);
+    contenedorBoton.appendChild(botonCancelar);
+
+    contenedorFormuario.appendChild(encabezadoFormulario);
+    contenedorFormuario.appendChild(contenedorURL);
+    contenedorFormuario.appendChild(contenedorNombre);
+    contenedorFormuario.appendChild(contenedorBoton);
+
+    contenedorVentana.appendChild(contenedorFormuario);
+    contenedor.appendChild(contenedorVentana);
+    contenedor.classList.add('bloquear');
+
+    //Eventos para Eliminar Ventana del DOOM
+
+    botonCancelar.onclick = e =>{
+
+        contenedorVentana.remove();
+        contenedor.classList.remove('bloquear');
+
+    };
+
+    contenedorVentana.onclick = e =>{
+
+        if(e.target.classList.value === 'ventana'){
+            contenedorVentana.remove();
+            contenedor.classList.remove('bloquear');
+        }
+
+    }
+
+    return botonEditar;
+
 
 }

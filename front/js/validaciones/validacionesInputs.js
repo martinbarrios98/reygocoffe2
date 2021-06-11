@@ -452,3 +452,45 @@ export function validarEstadoPedido(input, objeto){
     });
 
 }
+
+export function validarDisponibilidad(input, objeto){
+
+    input.addEventListener('input', e => {
+
+        if(e.target.value === ''){
+
+            alertaNotificacion('Error de validacion', 'Este campo no puede ir vacio', 'error');
+            objeto.disponibilidad = '';
+
+        }else{
+
+            const estadoTexto = e.target.value.trim();
+            alertaNotificacion('Validacion Correcta', 'Estado del producto validado correctamente', 'exito');
+            objeto.disponibilidad = estadoTexto;
+
+        }
+
+    });
+
+}
+
+export function validarPeso(input, objeto){
+
+    input.addEventListener('input', e => {
+
+        if(e.target.value === ''){
+
+            alertaNotificacion('Error de validacion', 'Este campo no puede ir vacio', 'error');
+            objeto.peso = '';
+
+        }else{
+
+            const estadoTexto = e.target.value.trim();
+            alertaNotificacion('Validacion Correcta', 'Peso del producto validado correctamente', 'exito');
+            objeto.peso = estadoTexto;
+
+        }
+
+    });
+
+}

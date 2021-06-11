@@ -64,7 +64,7 @@ export async function insertarUltimosPedidos(){
 
     pedidos.forEach(async pedido => {
 
-        const { id ,usuario, envio, total, direccion, estado, ciudad, fecha, referencias, postal } = pedido;
+        const { id ,usuario, envio, total, direccion, estado, ciudad, fecha, referencias, postal, peso } = pedido;
         const { informacionUsuario } = usuario;
 
         const contenedorPedido = document.createElement('div');
@@ -79,6 +79,9 @@ export async function insertarUltimosPedidos(){
 
         const parrafoLocalidad = document.createElement('p');
         parrafoLocalidad.textContent = `${estado} - ${ciudad}`;
+
+        const parrafoPesoPedido = document.createElement('p');
+        parrafoPesoPedido.textContent = `Peso total: ${Number(peso)/1000}kg`;
 
         const parrafoTotal = document.createElement('p');
         parrafoTotal.textContent = `$ ${parseInt(total)+parseInt(envio)}.00`;
@@ -101,6 +104,7 @@ export async function insertarUltimosPedidos(){
         contenedorPedido.appendChild(parrafoUsuario);
         contenedorPedido.appendChild(parrafoDireccion);
         contenedorPedido.appendChild(parrafoLocalidad);
+        contenedorPedido.appendChild(parrafoPesoPedido);
         contenedorPedido.appendChild(parrafoTotal);
         contenedorPedido.appendChild(parrafoFecha);
         contenedorPedido.appendChild(contenedorBoton);

@@ -49,3 +49,19 @@ export async function eliminacionProducto(id){
 
     return { req, res };
 }
+
+export async function eliminacionCategoria(id){
+    const informacion = JSON.parse(localStorage.getItem('sesion_in_admin'));
+    const token = informacion.token;
+    const req = await fetch(`${urlBase}categorias/eliminar/${id}`,{
+        mode: 'cors',
+        method: 'delete',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            'token': token
+        }
+    });
+    const res = await req.json();
+
+    return { req, res };
+}

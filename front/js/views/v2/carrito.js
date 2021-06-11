@@ -16,7 +16,8 @@ const pedido = {
     estado: '',
     ciudad: '',
     postal: '',
-    envio: 300
+    envio: 0,
+    peso: 0
 }
 
 export async function insertarProductosCarrito(){
@@ -30,7 +31,7 @@ export async function insertarProductosCarrito(){
 
         productos.forEach(async producto =>{
             
-            const { id, cantidad, precio } = producto;
+            const { id, cantidad, precio, peso } = producto;
             const datos = await obtenerProducto(id);
             const { nombre, descripcion, url, categoria_nombre } = datos;
 
@@ -79,8 +80,12 @@ export async function insertarProductosCarrito(){
             const parrafoPrecio = document.createElement('p');
             parrafoPrecio.textContent = `$ ${precio}`;
 
+            const parrafoPeso = document.createElement('p');
+            parrafoPeso.textContent = `${Number(peso)/1000}kg`;
+
             contenedorInformacionCarrito.appendChild(parrafoNombre);
             contenedorInformacionCarrito.appendChild(parrafoDescripcion);
+            contenedorInformacionCarrito.appendChild(parrafoPeso);
             contenedorInformacionCarrito.appendChild(parrafoPrecio);
 
             contenedorInformacion.appendChild(imagen);
@@ -118,7 +123,7 @@ export async function insertarProductosCarrito(){
         parrafoDenegacion.innerHTML = `
 
             Tu carrito esta vacio
-            <span>Hay muchos productos esperandote</span>
+            <span>hay muchos productos esperandote</span>
 
         `;
 
@@ -131,17 +136,109 @@ export async function insertarTotalCarrito(){
     const resultado = await JSON.parse(localStorage.getItem('carrito'));
     const contenedor = document.querySelector('#total-compra');
     const envio = document.querySelector('#total-envio');
+    const totalPeso = document.querySelector('#total-peso');
     let suma = 0;
+    let pesoPedido = 0;
 
-    resultado.forEach(async producto =>{
-        suma += parseFloat(producto.cantidad*producto.precio);
-        contenedor.textContent = `$ ${suma}`;
-        contenedor.dataset.precioTotal = suma;
-    });
+    if(!resultado){
 
-    if(suma > 1500){
-        envio.textContent = `$ ${0}`;
+        contenedor.textContent = `$ 0`;
+        contenedor.dataset.precioTotal = 0;
+
+        envio.textContent = `$ 0`;
         pedido.envio = 0;
+
+        totalPeso.textContent = '0 kg'
+        pedido.peso = 0;
+
+    }else{
+
+        resultado.forEach(async producto =>{
+            suma += parseFloat(producto.cantidad*producto.precio);
+            contenedor.textContent = `$ ${suma}`;
+            contenedor.dataset.precioTotal = suma;
+        });
+
+        resultado.forEach(async producto =>{
+            pesoPedido += (Number(producto.peso)*Number(producto.cantidad));
+        });
+        
+        pedido.peso = pesoPedido;
+
+        //LOCALES
+        if(suma > 2500 && pedido.estado === 'Tabasco'){
+            envio.textContent = `$ ${0}`;
+            pedido.envio = 0;
+        }
+        if(suma < 2500 && pedido.estado === 'Tabasco'){
+            envio.textContent = `$ ${150}`;
+            pedido.envio = 150;
+        }
+
+
+        //Foraneos
+        if(suma && pedido.estado !== 'Tabasco' && pedido.peso < 10000){
+            envio.textContent = `$ ${330}`;
+            pedido.envio = 330;
+            
+            totalPeso.textContent = `${Number(pedido.peso)/1000} kg`;
+        }
+
+        if(suma && pedido.estado !== 'Tabasco' && pedido.peso >= 10000 && pedido.peso < 20000 ){
+            envio.textContent = `$ ${430}`;
+            pedido.envio = 430;
+            totalPeso.textContent = `${Number(pedido.peso)/1000} kg`;
+        }
+        
+        if(suma && pedido.estado !== 'Tabasco' && pedido.peso >= 20000 && pedido.peso < 30000){
+            envio.textContent = `$ ${530}`;
+            pedido.envio = 530;
+            totalPeso.textContent = `${Number(pedido.peso)/1000} kg`;
+        }
+        
+        if(suma && pedido.estado !== 'Tabasco' && pedido.peso >= 30000 && pedido.peso < 40000 ){
+            envio.textContent = `$ ${630}`;
+            pedido.envio = 630;
+            totalPeso.textContent = `${Number(pedido.peso)/1000} kg`;
+        }
+
+        if(suma && pedido.estado !== 'Tabasco' && pedido.peso >= 40000 && pedido.peso < 50000 ){
+            envio.textContent = `$ ${730}`;
+            pedido.envio = 730;
+            totalPeso.textContent = `${Number(pedido.peso)/1000} kg`;
+        }
+
+        if(suma && pedido.estado !== 'Tabasco' && pedido.peso >= 50000 && pedido.peso < 60000 ){
+            envio.textContent = `$ ${830}`;
+            pedido.envio = 830;
+            totalPeso.textContent = `${Number(pedido.peso)/1000} kg`;
+        }
+
+        if(suma && pedido.estado !== 'Tabasco' && pedido.peso >= 60000 && pedido.peso < 70000 ){
+            envio.textContent = `$ ${930}`;
+            pedido.envio = 930;
+            totalPeso.textContent = `${Number(pedido.peso)/1000} kg`;
+        }
+        if(suma && pedido.estado !== 'Tabasco' && pedido.peso >= 70000 && pedido.peso < 80000 ){
+            envio.textContent = `$ ${1030}`;
+            pedido.envio = 1030;
+            totalPeso.textContent = `${Number(pedido.peso)/1000} kg`;
+        }
+        if(suma && pedido.estado !== 'Tabasco' && pedido.peso >= 80000 && pedido.peso < 90000 ){
+            envio.textContent = `$ ${1130}`;
+            pedido.envio = 1130;
+            totalPeso.textContent = `${Number(pedido.peso)/1000} kg`;
+        }
+        if(suma && pedido.estado !== 'Tabasco' && pedido.peso >= 90000 && pedido.peso < 100000 ){
+            envio.textContent = `$ ${1230}`;
+            pedido.envio = 1230;
+            totalPeso.textContent = `${Number(pedido.peso)/1000} kg`;
+        }
+        if(suma && pedido.estado !== 'Tabasco' && pedido.peso >= 100000){
+            envio.textContent = `$ ${1330}`;
+            pedido.envio = 1330;
+            totalPeso.textContent = `${Number(pedido.peso)/1000} kg`;
+        }
     }
 }
 
@@ -209,7 +306,9 @@ export async function eliminarProducto(e){
             
 
             localStorage.removeItem('carrito');
-            localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
+            if(nuevoCarrito.length > 0){
+                localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
+            }
             location.reload();
 
         }
@@ -308,12 +407,43 @@ export async function agregarPedido(){
 
                     if (result.isConfirmed) {
 
-                        if(localStorage.getItem('pedido')){
-                            localStorage.removeItem('pedido');
-                        }
-                        
-                        localStorage.setItem('pedido', JSON.stringify(resultado));
-                        window.location = 'pago.html';
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'info',
+                            title: 'Validando disponibilidad de productos ... ',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                        let error = false;
+
+                        JSON.parse(localStorage.getItem('carrito')).forEach(async elemento =>{
+
+                            let producto = await obtenerProducto(parseInt(elemento.id));
+
+                            if(producto.disponibilidad === 'no disponible'){
+                                error = true;
+                            }
+
+                        });
+
+                        setTimeout(() => {
+                            if(error === true){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Hay producto en tu carrito que no tiene disponibles!'
+                                });
+                            }else{
+                                
+                                if(localStorage.getItem('pedido')){
+                                    localStorage.removeItem('pedido');
+                                }
+                                
+                                localStorage.setItem('pedido', JSON.stringify(resultado));
+                                window.location = 'pago.html';
+                            }
+                        }, 1500);
 
                     }
                 })
@@ -329,4 +459,16 @@ export async function agregarPedido(){
 export async function expandarImagen(e) {
     const url = e.target.src;
     ventanaImagenMax(url);
+}
+
+export async function estadoPedido(){
+
+    const boton = document.querySelector('#estado');
+
+    boton.addEventListener('input', e =>{
+
+        insertarTotalCarrito();
+
+    });
+
 }

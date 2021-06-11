@@ -23,6 +23,6 @@ export async function insertarMapa (){
         radius: 40
     }).addTo(miMapa);
 
-    marca.bindPopup("<b>ReygoCoffe!!</b><br>Doctor Ramon Medina, Colonia Centro, Teapa, Tabasco.").openPopup();
+    marca.bindPopup("<b>ReygoCoffe!!</b><br>Doctor Ramon Medina #102, Colonia Centro, Teapa, Tabasco.").openPopup();
 
 }

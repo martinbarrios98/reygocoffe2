@@ -13,7 +13,7 @@ export async function insertarProductos(){
 
     productos.forEach(async producto =>{
 
-        const { nombre, id, precio, descripcion, url, categoria_nombre } = producto;
+        const { nombre, id, precio, descripcion, url, categoria_nombre, peso, disponibilidad } = producto;
 
         const contenedorProducto = document.createElement('div');
         contenedorProducto.classList.add('contenedor-producto');
@@ -38,10 +38,19 @@ export async function insertarProductos(){
         const parrafoPrecio = document.createElement('p');
         parrafoPrecio.textContent = `$${precio}`;
 
+        const parrafoPeso = document.createElement('p');
+        parrafoPeso.textContent = `Peso: ${Number(peso)/1000}kg`;
+
+        const parrafoDisponibilidad = document.createElement('p');
+        parrafoDisponibilidad.innerHTML = `Estado:  ${disponibilidad}`;
+        parrafoDisponibilidad.classList.add('disponibilidad');
+
         contenedorDetalles.appendChild(parrafoNombre);
         contenedorDetalles.appendChild(parrafoCategoria);
         contenedorDetalles.appendChild(parrafoDescripcion);
+        contenedorDetalles.appendChild(parrafoPeso);
         contenedorDetalles.appendChild(parrafoPrecio);
+        contenedorDetalles.appendChild(parrafoDisponibilidad);
 
         const contenedorBoton = document.createElement('div');
         contenedorBoton.classList.add('contenedor-boton');
@@ -127,7 +136,7 @@ async function insertarProductosOption(){
 
             arregloProductos.forEach(async producto =>{
 
-                const { nombre, id, precio, descripcion, url, categoria_nombre } = producto;
+                const { nombre, id, precio, descripcion, url, categoria_nombre, peso, disponibilidad } = producto;
         
                 const contenedorProducto = document.createElement('div');
                 contenedorProducto.classList.add('contenedor-producto');
@@ -151,11 +160,20 @@ async function insertarProductosOption(){
         
                 const parrafoPrecio = document.createElement('p');
                 parrafoPrecio.textContent = `$${precio}`;
+
+                const parrafoPeso = document.createElement('p');
+                parrafoPeso.textContent = `Peso: ${Number(peso)/1000}kg`;
+
+                const parrafoDisponibilidad = document.createElement('p');
+                parrafoDisponibilidad.innerHTML = `Estado:  ${disponibilidad}`;
+                parrafoDisponibilidad.classList.add('disponibilidad');
         
                 contenedorDetalles.appendChild(parrafoNombre);
                 contenedorDetalles.appendChild(parrafoCategoria);
                 contenedorDetalles.appendChild(parrafoDescripcion);
+                contenedorDetalles.appendChild(parrafoPeso);
                 contenedorDetalles.appendChild(parrafoPrecio);
+                contenedorDetalles.appendChild(parrafoDisponibilidad);
         
                 const contenedorBoton = document.createElement('div');
                 contenedorBoton.classList.add('contenedor-boton');
@@ -195,7 +213,7 @@ async function insertarProductosOption(){
                 if(parseInt(producto.categoria) === parseInt(e.target.value)){
 
 
-                    const { nombre, id, precio, descripcion, url, categoria_nombre } = producto;
+                    const { nombre, id, precio, descripcion, url, categoria_nombre, peso, disponibilidad } = producto;
         
                     const contenedorProducto = document.createElement('div');
                     contenedorProducto.classList.add('contenedor-producto');
@@ -219,11 +237,20 @@ async function insertarProductosOption(){
             
                     const parrafoPrecio = document.createElement('p');
                     parrafoPrecio.textContent = `$${precio}`;
+
+                    const parrafoPeso = document.createElement('p');
+                    parrafoPeso.textContent = `Peso: ${Number(peso)/1000}kg`;
+
+                    const parrafoDisponibilidad = document.createElement('p');
+                    parrafoDisponibilidad.innerHTML = `Estado:  ${disponibilidad}`;
+                    parrafoDisponibilidad.classList.add('disponibilidad');
             
                     contenedorDetalles.appendChild(parrafoNombre);
                     contenedorDetalles.appendChild(parrafoCategoria);
                     contenedorDetalles.appendChild(parrafoDescripcion);
+                    contenedorDetalles.appendChild(parrafoPeso);
                     contenedorDetalles.appendChild(parrafoPrecio);
+                    contenedorDetalles.appendChild(parrafoDisponibilidad);
             
                     const contenedorBoton = document.createElement('div');
                     contenedorBoton.classList.add('contenedor-boton');

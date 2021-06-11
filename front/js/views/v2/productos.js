@@ -7,7 +7,8 @@ let carrito = [];
 let producto = {
     id: '',
     cantidad: '',
-    precio: ''
+    precio: '',
+    peso: ''
 }
 
 export async function insertarProductos (){
@@ -23,13 +24,14 @@ export async function insertarProductos (){
 
         productos.forEach( async producto =>{
 
-            const { id, nombre, descripcion, url, precio, categoria, categoria_nombre } = producto;
+            const { id, nombre, descripcion, url, precio, categoria, categoria_nombre, peso, disponibilidad } = producto;
             idCat = categoria;
 
             const contenedorProducto = document.createElement('div');
             contenedorProducto.classList.add('contenedor-producto');
             contenedorProducto.id = id;
             contenedorProducto.dataset.productoPrecio = precio;
+            contenedorProducto.dataset.productoPeso = peso;
 
             const imagen = document.createElement('img');
             imagen.src = url;
@@ -50,23 +52,41 @@ export async function insertarProductos (){
             parrafoDescripcion.textContent = descripcion;
             parrafoDescripcion.classList.add('descripcion');
 
+            const parrafoPeso = document.createElement('p');
+            parrafoPeso.innerHTML = `<i class="fas fa-weight"></i> ${Number(peso)/1000}kg`;
+            parrafoPeso.classList.add('peso');
+
             const parrafoPrecio = document.createElement('p');
             parrafoPrecio.textContent = `$ ${precio}`;
             parrafoPrecio.classList.add('precio');
 
+            const parrafoDisponibilidad = document.createElement('p');
+            parrafoDisponibilidad.innerHTML = `<i class="fas fa-chevron-right"></i>  ${disponibilidad}`;
+            parrafoDisponibilidad.classList.add('disponibilidad');
+
             const contenedorBoton = document.createElement('div');
             contenedorBoton.classList.add('contenedor-boton');
-
+            
             const boton = document.createElement('button');
-            boton.classList.add('boton', 'boton-normal');
-            boton.id = 'agregar-carrito';
-            boton.textContent = 'Agregar';
-            contenedorBoton.appendChild(boton);
+
+            if(disponibilidad === 'disponible'){
+                boton.id = 'agregar-carrito';
+                boton.textContent = 'Agregar';
+                contenedorBoton.appendChild(boton);
+                boton.classList.add('boton', 'boton-normal');
+            }else{
+                boton.id = 'no-disponible';
+                boton.textContent = 'No disponible';
+                contenedorBoton.appendChild(boton);
+                boton.classList.add('boton', 'boton-eliminar');
+            }
 
             contenedorInformacion.appendChild(parrafoNombre);
             contenedorInformacion.appendChild(parrafoCategoria);
             contenedorInformacion.appendChild(parrafoDescripcion);
+            contenedorInformacion.appendChild(parrafoPeso);
             contenedorInformacion.appendChild(parrafoPrecio);
+            contenedorInformacion.appendChild(parrafoDisponibilidad);
             contenedorInformacion.appendChild(contenedorBoton);
 
             contenedorProducto.appendChild(imagen);
@@ -80,6 +100,7 @@ export async function insertarProductos (){
 
         informacionCatProducto(idCat);
         agregarCarrito();
+        mensajeNoDisponible();
 
     }else{
         const parrafoDenegacion = document.createElement('p');
@@ -232,6 +253,7 @@ export async function agregarCarrito (){
                 e.preventDefault();
     
                 let identificador = parseInt(e.target.parentElement.parentElement.parentElement.id);
+                const pesoProducto = Number(e.target.parentElement.parentElement.parentElement.dataset.productoPeso);
                 let precioProducto = e.target.parentElement.parentElement.parentElement.dataset.productoPrecio;
                 let carritoLocal = localStorage.getItem('carrito');
     
@@ -249,6 +271,7 @@ export async function agregarCarrito (){
                     producto.id = identificador;
                     producto.precio = precioProducto;
                     producto.cantidad = 1;
+                    producto.peso = pesoProducto;
                     carrito.push(producto);
                     localStorage.removeItem('carrito');
                     localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -258,6 +281,7 @@ export async function agregarCarrito (){
                 }else{
                     producto.id = identificador;
                     producto.cantidad = 1;
+                    producto.peso = pesoProducto;
                     producto.precio = precioProducto;
                     carrito.push(producto);
                     localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -265,12 +289,40 @@ export async function agregarCarrito (){
                     cantidadProductos();
                 }
     
+            }else{
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'No hay disponibles para este producto!'
+                })
+
             }
     
         });
 
     });
     
+
+}
+
+export async function mensajeNoDisponible(){
+
+    const botones = document.querySelectorAll('#no-disponible');
+
+    botones.forEach(async boton =>{
+
+        boton.addEventListener('click', e =>{
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'No hay disponibles para este producto!'
+            });
+
+        });
+
+    });
 
 }
 

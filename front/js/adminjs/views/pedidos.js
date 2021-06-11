@@ -13,7 +13,7 @@ export async function insertarPedidos(){
 
     pedidos.forEach(async pedido =>{
 
-        const { id, ciudad, estado, comision_paypal, id_transacion, envio, total, estado_pedido, fecha, numero_guia, paqueteria, postal, referencias, usuario, productos, direccion, modalidad } = pedido;
+        const { id, ciudad, estado, comision_paypal, id_transacion, envio, total, estado_pedido, fecha, numero_guia, paqueteria, postal, referencias, usuario, productos, direccion, modalidad, peso } = pedido;
 
         const contenedorPedido = document.createElement('div');
         contenedorPedido.classList.add('contenedor-pedido');
@@ -60,16 +60,20 @@ export async function insertarPedidos(){
         contenedorInformacionPago.classList.add('informacion-pago');
 
         const parrafoTotal = document.createElement('p');
-        parrafoTotal.textContent = `$${parseInt(total)+parseInt(envio)}.00`;
+        parrafoTotal.textContent = `Total: $${parseInt(total)+parseInt(envio)}.00`;
 
         const parrafoComision = document.createElement('p');
-        parrafoComision.textContent = `$${comision_paypal}`;
+        parrafoComision.textContent = `Comision: $${comision_paypal}`;
 
         const parrafoTransacion = document.createElement('p');
-        parrafoTransacion.textContent = id_transacion;
+        parrafoTransacion.textContent = `Id: ${id_transacion}`;
+
+        const parrafoEnvio = document.createElement('p');
+        parrafoEnvio.textContent = `Envio: $${envio}`;
 
         contenedorInformacionPago.appendChild(parrafoTotal);
         contenedorInformacionPago.appendChild(parrafoComision);
+        contenedorInformacionPago.appendChild(parrafoEnvio);
         contenedorInformacionPago.appendChild(parrafoTransacion);
 
         //Detalles Informacion Envio
@@ -96,7 +100,7 @@ export async function insertarPedidos(){
         contenedorInformacionProducto.classList.add('informacion-producto');
 
         const parrafoProductos = document.createElement('p');
-        parrafoProductos.textContent = `${productos.length} productos listados`;
+        parrafoProductos.textContent = `${productos.length} productos listados - ${Number(peso)/1000}kg`;
 
         const botonVerListaProductos = document.createElement('button');
         botonVerListaProductos.type = 'button';
