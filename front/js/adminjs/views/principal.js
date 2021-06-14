@@ -62,64 +62,73 @@ export async function insertarUltimosPedidos(){
     const pedidos = await obtenerUltimosPedidos();
     const contenedor = document.querySelector('.contenido-ultimos-pedidos');
 
-    pedidos.forEach(async pedido => {
+    if(pedidos){
+        pedidos.forEach(async pedido => {
 
-        const { id ,usuario, envio, total, direccion, estado, ciudad, fecha, referencias, postal, peso } = pedido;
-        const { informacionUsuario } = usuario;
-
-        const contenedorPedido = document.createElement('div');
-        contenedorPedido.dataset.idPedido = id;
-        contenedorPedido.classList.add('contenedor-ultimo-pedido');
-
-        const parrafoUsuario = document.createElement('p');
-        parrafoUsuario.innerHTML = `${informacionUsuario.nombre} ${informacionUsuario.apellido} - <span>${informacionUsuario.correo}</span>`;
-
-        const parrafoDireccion = document.createElement('p');
-        parrafoDireccion.innerHTML = `${direccion}-${referencias}: <span># ${postal}</span>`;
-
-        const parrafoLocalidad = document.createElement('p');
-        parrafoLocalidad.textContent = `${estado} - ${ciudad}`;
-
-        const parrafoPesoPedido = document.createElement('p');
-        parrafoPesoPedido.textContent = `Peso total: ${Number(peso)/1000}kg`;
-
-        const parrafoTotal = document.createElement('p');
-        parrafoTotal.textContent = `$ ${parseInt(total)+parseInt(envio)}.00`;
-        parrafoTotal.classList.add('precio');
-
-        const parrafoFecha = document.createElement('p');
-        parrafoFecha.textContent = `${fecha.split('T')[0]} - ${fecha.split('T')[1].split('Z')[0]}`;
-
-        const contenedorBoton = document.createElement('div');
-        contenedorBoton.classList.add('contenedor-boton');
-        contenedorBoton.dataset.idUsuario = id;
-
-        const boton = document.createElement('button');
-        boton.textContent = 'Ir a pedidos';
-        boton.classList.add('boton', 'boton-normal');
-        boton.id = 'ver-pedido';
-
-        contenedorBoton.appendChild(boton);
-
-        contenedorPedido.appendChild(parrafoUsuario);
-        contenedorPedido.appendChild(parrafoDireccion);
-        contenedorPedido.appendChild(parrafoLocalidad);
-        contenedorPedido.appendChild(parrafoPesoPedido);
-        contenedorPedido.appendChild(parrafoTotal);
-        contenedorPedido.appendChild(parrafoFecha);
-        contenedorPedido.appendChild(contenedorBoton);
-
-        contenedor.appendChild(contenedorPedido);
-
-        boton.addEventListener('click', e =>{
-
-            e.preventDefault();
-
-            window.location = 'pedidos.html';
-
+            const { id ,usuario, envio, total, direccion, estado, ciudad, fecha, referencias, postal, peso } = pedido;
+            const { informacionUsuario } = usuario;
+    
+            const contenedorPedido = document.createElement('div');
+            contenedorPedido.dataset.idPedido = id;
+            contenedorPedido.classList.add('contenedor-ultimo-pedido');
+    
+            const parrafoUsuario = document.createElement('p');
+            parrafoUsuario.innerHTML = `${informacionUsuario.nombre} ${informacionUsuario.apellido} - <span>${informacionUsuario.correo}</span>`;
+    
+            const parrafoDireccion = document.createElement('p');
+            parrafoDireccion.innerHTML = `${direccion}-${referencias}: <span># ${postal}</span>`;
+    
+            const parrafoLocalidad = document.createElement('p');
+            parrafoLocalidad.textContent = `${estado} - ${ciudad}`;
+    
+            const parrafoPesoPedido = document.createElement('p');
+            parrafoPesoPedido.textContent = `Peso total: ${Number(peso)/1000}kg`;
+    
+            const parrafoTotal = document.createElement('p');
+            parrafoTotal.textContent = `$ ${parseInt(total)+parseInt(envio)}.00`;
+            parrafoTotal.classList.add('precio');
+    
+            const parrafoFecha = document.createElement('p');
+            parrafoFecha.textContent = `${fecha.split('T')[0]} - ${fecha.split('T')[1].split('Z')[0]}`;
+    
+            const contenedorBoton = document.createElement('div');
+            contenedorBoton.classList.add('contenedor-boton');
+            contenedorBoton.dataset.idUsuario = id;
+    
+            const boton = document.createElement('button');
+            boton.textContent = 'Ir a pedidos';
+            boton.classList.add('boton', 'boton-normal');
+            boton.id = 'ver-pedido';
+    
+            contenedorBoton.appendChild(boton);
+    
+            contenedorPedido.appendChild(parrafoUsuario);
+            contenedorPedido.appendChild(parrafoDireccion);
+            contenedorPedido.appendChild(parrafoLocalidad);
+            contenedorPedido.appendChild(parrafoPesoPedido);
+            contenedorPedido.appendChild(parrafoTotal);
+            contenedorPedido.appendChild(parrafoFecha);
+            contenedorPedido.appendChild(contenedorBoton);
+    
+            contenedor.appendChild(contenedorPedido);
+    
+            boton.addEventListener('click', e =>{
+    
+                e.preventDefault();
+    
+                window.location = 'pedidos.html';
+    
+            });
+    
         });
+    }else{
 
-    });
+        const parrafoDenegacion = document.createElement('p');
+        parrafoDenegacion.textContent = 'No hay pedidos realizados actualmente';
+
+        contenedor.appendChild(parrafoDenegacion);
+
+    }
 
 }
 
@@ -131,7 +140,12 @@ export async function insertarContadores(){
     const contadorProductos = document.querySelector('#contador-productos');
     const contadorAdmin = document.querySelector('#contador-admin');
 
-    const longitudPedidos = resultados[0].pedidos.length;
+    let longitudPedidos;
+    if(resultados[0].pedidos){
+        longitudPedidos = resultados[0].pedidos.length; 
+    }else{
+        longitudPedidos = 0; 
+    }
     const longitudUsuarios = resultados[1].length;
     const longitudAdmin = resultados[2].length;
     const longitudProductos = resultados[3].length;

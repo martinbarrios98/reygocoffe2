@@ -207,11 +207,13 @@ export async function obtenerFechasPedido(){
 
     const fechas = [];
 
-    pedidos.forEach(async pedido =>{
-
-        fechas.push(pedido.fecha.split('T')[0]);
-
-    });
+    if(pedidos){
+        pedidos.forEach(async pedido =>{
+    
+            fechas.push(pedido.fecha.split('T')[0]);
+    
+        });
+    }
 
     return fechas;
 }

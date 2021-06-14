@@ -11,134 +11,143 @@ export async function insertarPedidos(){
     const pedidos = await req.pedidos;
     insertarIngresosComisiones( pedidos );
 
-    pedidos.forEach(async pedido =>{
+    if(pedidos){
+        pedidos.forEach(async pedido =>{
 
-        const { id, ciudad, estado, comision_paypal, id_transacion, envio, total, estado_pedido, fecha, numero_guia, paqueteria, postal, referencias, usuario, productos, direccion, modalidad, peso } = pedido;
+            const { id, ciudad, estado, comision_paypal, id_transacion, envio, total, estado_pedido, fecha, numero_guia, paqueteria, postal, referencias, usuario, productos, direccion, modalidad, peso } = pedido;
+    
+            const contenedorPedido = document.createElement('div');
+            contenedorPedido.classList.add('contenedor-pedido');
+            contenedorPedido.dataset.idPedido = id;
+    
+            //Detalles Informacion Usuario
+            const contenedorInformacionUsuario = document.createElement('div');
+            contenedorInformacionUsuario.classList.add('informacion-usuario');
+    
+            const parrafoNombre = document.createElement('p');
+            parrafoNombre.textContent = `${usuario.informacionUsuario.nombre} ${usuario.informacionUsuario.apellido}`;
+    
+            const parrafoCorreo = document.createElement('p');
+            parrafoCorreo.textContent = `${usuario.informacionUsuario.correo}`;
+    
+            const parrafoTelefono = document.createElement('p');
+            parrafoTelefono.textContent = `${usuario.informacionUsuario.telefono}`;
+    
+            contenedorInformacionUsuario.appendChild(parrafoNombre);
+            contenedorInformacionUsuario.appendChild(parrafoCorreo);
+            contenedorInformacionUsuario.appendChild(parrafoTelefono);
+    
+            //Detalles Informacion Entrega
+    
+            const contenedorInformacionEntrega = document.createElement('div');
+            contenedorInformacionEntrega.classList.add('informacion-entrega');
+    
+            const parrafoLocalidad = document.createElement('p');
+            parrafoLocalidad.textContent = `${estado}-${ciudad}-${modalidad}`;
+    
+            const parrafoDireccion = document.createElement('p');
+            parrafoDireccion.textContent = `${direccion} #${postal}`;
+    
+            const parrafoReferencias = document.createElement('p');
+            parrafoReferencias.textContent = referencias;
+    
+            contenedorInformacionEntrega.appendChild(parrafoLocalidad);
+            contenedorInformacionEntrega.appendChild(parrafoDireccion);
+            contenedorInformacionEntrega.appendChild(parrafoReferencias);
+    
+            //Detalles Informacion Pago 
+    
+            const contenedorInformacionPago = document.createElement('div');
+            contenedorInformacionPago.classList.add('informacion-pago');
+    
+            const parrafoTotal = document.createElement('p');
+            parrafoTotal.textContent = `Total: $${parseInt(total)+parseInt(envio)}.00`;
+    
+            const parrafoComision = document.createElement('p');
+            parrafoComision.textContent = `Comision: $${comision_paypal}`;
+    
+            const parrafoTransacion = document.createElement('p');
+            parrafoTransacion.textContent = `Id: ${id_transacion}`;
+    
+            const parrafoEnvio = document.createElement('p');
+            parrafoEnvio.textContent = `Envio: $${envio}`;
+    
+            contenedorInformacionPago.appendChild(parrafoTotal);
+            contenedorInformacionPago.appendChild(parrafoComision);
+            contenedorInformacionPago.appendChild(parrafoEnvio);
+            contenedorInformacionPago.appendChild(parrafoTransacion);
+    
+            //Detalles Informacion Envio
+    
+            const contenedorInformacionEnvio = document.createElement('div');
+            contenedorInformacionEnvio.classList.add('informacion-envio');
+    
+            const parrafoFecha = document.createElement('p');
+            parrafoFecha.textContent = `${fecha.split('T')[0]}`;
+    
+            const parrafoEstadoPedido = document.createElement('p');
+            parrafoEstadoPedido.textContent = estado_pedido;
+    
+            const parrafoGuia = document.createElement('p');
+            parrafoGuia.textContent = `#${numero_guia} - Paqueteria:${paqueteria}`;
+    
+            contenedorInformacionEnvio.appendChild(parrafoFecha);
+            contenedorInformacionEnvio.appendChild(parrafoEstadoPedido);
+            contenedorInformacionEnvio.appendChild(parrafoGuia);
+    
+            //Detalles Informacion Productos
+    
+            const contenedorInformacionProducto = document.createElement('div');
+            contenedorInformacionProducto.classList.add('informacion-producto');
+    
+            const parrafoProductos = document.createElement('p');
+            parrafoProductos.textContent = `${productos.length} productos listados - ${Number(peso)/1000}kg`;
+    
+            const botonVerListaProductos = document.createElement('button');
+            botonVerListaProductos.type = 'button';
+            botonVerListaProductos.id = 'ver-lista-productos';
+            botonVerListaProductos.classList.add('boton', 'boton-normal');
+            botonVerListaProductos.textContent = 'VER PRODUCTOS';
+    
+            contenedorInformacionProducto.appendChild(parrafoProductos);
+            contenedorInformacionProducto.appendChild(botonVerListaProductos);
+    
+            //BOTONES
+    
+            const contenedorBotones = document.createElement('div');
+            contenedorBotones.classList.add('contenedor-boton');
+    
+            const botonEditar = document.createElement('button');
+            botonEditar.type = 'button';
+            botonEditar.id = 'editar';
+            botonEditar.textContent = 'EDITAR';
+            botonEditar.classList.add('boton', 'boton-editar');
+    
+            contenedorBotones.appendChild(botonEditar);
+    
+            contenedorPedido.appendChild(contenedorInformacionUsuario);
+            contenedorPedido.appendChild(contenedorInformacionEntrega);
+            contenedorPedido.appendChild(contenedorInformacionPago);
+            contenedorPedido.appendChild(contenedorInformacionEnvio);
+            contenedorPedido.appendChild(contenedorInformacionProducto);
+            contenedorPedido.appendChild(contenedorBotones);
+    
+            contenedor.appendChild(contenedorPedido);
+    
+            botonVerListaProductos.onclick = e =>{ventanaProductos(productos)};
+            botonEditar.onclick = e =>{editarPedido(pedido)};
+    
+        });
+    
+        buscadorPedidos();
+    }else{
 
-        const contenedorPedido = document.createElement('div');
-        contenedorPedido.classList.add('contenedor-pedido');
-        contenedorPedido.dataset.idPedido = id;
+        const parrafoDenegacion = document.createElement('p');
+        parrafoDenegacion.textContent = 'No hay pedidos realizados actualmente';
 
-        //Detalles Informacion Usuario
-        const contenedorInformacionUsuario = document.createElement('div');
-        contenedorInformacionUsuario.classList.add('informacion-usuario');
+        contenedor.appendChild(parrafoDenegacion);
 
-        const parrafoNombre = document.createElement('p');
-        parrafoNombre.textContent = `${usuario.informacionUsuario.nombre} ${usuario.informacionUsuario.apellido}`;
-
-        const parrafoCorreo = document.createElement('p');
-        parrafoCorreo.textContent = `${usuario.informacionUsuario.correo}`;
-
-        const parrafoTelefono = document.createElement('p');
-        parrafoTelefono.textContent = `${usuario.informacionUsuario.telefono}`;
-
-        contenedorInformacionUsuario.appendChild(parrafoNombre);
-        contenedorInformacionUsuario.appendChild(parrafoCorreo);
-        contenedorInformacionUsuario.appendChild(parrafoTelefono);
-
-        //Detalles Informacion Entrega
-
-        const contenedorInformacionEntrega = document.createElement('div');
-        contenedorInformacionEntrega.classList.add('informacion-entrega');
-
-        const parrafoLocalidad = document.createElement('p');
-        parrafoLocalidad.textContent = `${estado}-${ciudad}-${modalidad}`;
-
-        const parrafoDireccion = document.createElement('p');
-        parrafoDireccion.textContent = `${direccion} #${postal}`;
-
-        const parrafoReferencias = document.createElement('p');
-        parrafoReferencias.textContent = referencias;
-
-        contenedorInformacionEntrega.appendChild(parrafoLocalidad);
-        contenedorInformacionEntrega.appendChild(parrafoDireccion);
-        contenedorInformacionEntrega.appendChild(parrafoReferencias);
-
-        //Detalles Informacion Pago 
-
-        const contenedorInformacionPago = document.createElement('div');
-        contenedorInformacionPago.classList.add('informacion-pago');
-
-        const parrafoTotal = document.createElement('p');
-        parrafoTotal.textContent = `Total: $${parseInt(total)+parseInt(envio)}.00`;
-
-        const parrafoComision = document.createElement('p');
-        parrafoComision.textContent = `Comision: $${comision_paypal}`;
-
-        const parrafoTransacion = document.createElement('p');
-        parrafoTransacion.textContent = `Id: ${id_transacion}`;
-
-        const parrafoEnvio = document.createElement('p');
-        parrafoEnvio.textContent = `Envio: $${envio}`;
-
-        contenedorInformacionPago.appendChild(parrafoTotal);
-        contenedorInformacionPago.appendChild(parrafoComision);
-        contenedorInformacionPago.appendChild(parrafoEnvio);
-        contenedorInformacionPago.appendChild(parrafoTransacion);
-
-        //Detalles Informacion Envio
-
-        const contenedorInformacionEnvio = document.createElement('div');
-        contenedorInformacionEnvio.classList.add('informacion-envio');
-
-        const parrafoFecha = document.createElement('p');
-        parrafoFecha.textContent = `${fecha.split('T')[0]}`;
-
-        const parrafoEstadoPedido = document.createElement('p');
-        parrafoEstadoPedido.textContent = estado_pedido;
-
-        const parrafoGuia = document.createElement('p');
-        parrafoGuia.textContent = `#${numero_guia} - Paqueteria:${paqueteria}`;
-
-        contenedorInformacionEnvio.appendChild(parrafoFecha);
-        contenedorInformacionEnvio.appendChild(parrafoEstadoPedido);
-        contenedorInformacionEnvio.appendChild(parrafoGuia);
-
-        //Detalles Informacion Productos
-
-        const contenedorInformacionProducto = document.createElement('div');
-        contenedorInformacionProducto.classList.add('informacion-producto');
-
-        const parrafoProductos = document.createElement('p');
-        parrafoProductos.textContent = `${productos.length} productos listados - ${Number(peso)/1000}kg`;
-
-        const botonVerListaProductos = document.createElement('button');
-        botonVerListaProductos.type = 'button';
-        botonVerListaProductos.id = 'ver-lista-productos';
-        botonVerListaProductos.classList.add('boton', 'boton-normal');
-        botonVerListaProductos.textContent = 'VER PRODUCTOS';
-
-        contenedorInformacionProducto.appendChild(parrafoProductos);
-        contenedorInformacionProducto.appendChild(botonVerListaProductos);
-
-        //BOTONES
-
-        const contenedorBotones = document.createElement('div');
-        contenedorBotones.classList.add('contenedor-boton');
-
-        const botonEditar = document.createElement('button');
-        botonEditar.type = 'button';
-        botonEditar.id = 'editar';
-        botonEditar.textContent = 'EDITAR';
-        botonEditar.classList.add('boton', 'boton-editar');
-
-        contenedorBotones.appendChild(botonEditar);
-
-        contenedorPedido.appendChild(contenedorInformacionUsuario);
-        contenedorPedido.appendChild(contenedorInformacionEntrega);
-        contenedorPedido.appendChild(contenedorInformacionPago);
-        contenedorPedido.appendChild(contenedorInformacionEnvio);
-        contenedorPedido.appendChild(contenedorInformacionProducto);
-        contenedorPedido.appendChild(contenedorBotones);
-
-        contenedor.appendChild(contenedorPedido);
-
-        botonVerListaProductos.onclick = e =>{ventanaProductos(productos)};
-        botonEditar.onclick = e =>{editarPedido(pedido)};
-
-    });
-
-    buscadorPedidos();
+    }
 
 }
 
@@ -149,14 +158,19 @@ async function insertarIngresosComisiones( objeto ){
     const parrafoIngreso = document.querySelector('#ingreso');
     const parrafoComision = document.querySelector('#comision');
 
-    objeto.forEach(async pedido =>{
-        const { total, envio, comision_paypal } = pedido;
-        sumaIngreso += parseInt(total)+parseInt(envio);
-        sumaComision += parseFloat(comision_paypal);
-    });
+    if(objeto){
+        objeto.forEach(async pedido =>{
+            const { total, envio, comision_paypal } = pedido;
+            sumaIngreso += parseInt(total)+parseInt(envio);
+            sumaComision += parseFloat(comision_paypal);
     
-    parrafoIngreso.textContent = `$${sumaIngreso}.00`;
-    parrafoComision.textContent = `$${sumaComision}`;
+            parrafoIngreso.textContent = `$${sumaIngreso}.00`;
+            parrafoComision.textContent = `$${sumaComision}`;
+        });
+    }else{
+        parrafoIngreso.textContent = `$0.00`;
+        parrafoComision.textContent = `$0.00`;
+    }
 
 }
 
@@ -229,14 +243,16 @@ async function editarPedido( objeto ){
 export async function insertarOptionFecha(){
     const fechas = await obtenerFechasPedido();
     const contenedor = document.querySelector('#fecha-pedido');
-    fechas.forEach(async fecha =>{
-
-        const option = document.createElement('option');
-        option.value = fecha;
-        option.textContent = fecha;
-        contenedor.appendChild(option);
-    });
-    filtradorFecha();
+    if(fechas){
+        fechas.forEach(async fecha =>{
+    
+            const option = document.createElement('option');
+            option.value = fecha;
+            option.textContent = fecha;
+            contenedor.appendChild(option);
+        });
+        filtradorFecha();
+    }
 }
 
 async function filtradorFecha(){
