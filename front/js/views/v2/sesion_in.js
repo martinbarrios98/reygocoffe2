@@ -265,8 +265,7 @@ export async function obtenerInformacionPedidoUsuario(){
     const contenedor = document.querySelector('.contenido-pedidos');
 
     const verificacion = await verificarLength(resultado);
-    console.log(resultado.length);
-    if(resultado.length === 0){
+    if(resultado.length === 0 || !resultado.length || resultado === undefined){
 
 
 
@@ -379,11 +378,7 @@ export async function obtenerInformacionPedidoUsuario(){
 
         });
 
-
-
     }
-
-
 
 }
 

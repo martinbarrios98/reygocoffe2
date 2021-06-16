@@ -48,7 +48,8 @@ const sesionAdmin = {
 
 const categoria = {
     nombre: '',
-    url: ''
+    url: '',
+    descripcion: ''
 }
 
 export async function validacionesUsuario (){
@@ -249,9 +250,11 @@ export async function validacionesCategoria(){
 
     const inputNombre = document.querySelector('#nombre');
     const inputImagen = document.querySelector('#imagen');
+    const inputDescripcion = document.querySelector('#descripcion');
 
     validarNombre(inputNombre, categoria);
     validarURL(inputImagen, categoria);
+    validarDescripcion(inputDescripcion, categoria);
 
     return categoria;
 
@@ -261,9 +264,11 @@ export async function validacionesCategoriaEditar( objeto ){
 
     const inputNombre = document.querySelector('#nombre-editar');
     const inputImagen = document.querySelector('#imagen-editar');
+    const inputDescripcion = document.querySelector('#descripcion-editar');
 
     validarNombre(inputNombre, objeto);
     validarURLEditar(inputImagen, objeto);
+    validarDescripcion(inputDescripcion, objeto);
 
     return objeto;
 

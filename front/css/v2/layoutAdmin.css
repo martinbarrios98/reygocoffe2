@@ -467,6 +467,10 @@ p.parrafo-notificacion{
     gap: 1rem;
 }
 
+.formulario-agregar-administrador .contenedor-boton{
+    margin: 2rem 0;
+}
+
 .formulario-agregar-administrador button:hover{
     transform: scale(1.03);
 }
@@ -821,7 +825,7 @@ p.parrafo-notificacion{
     border-radius: 1rem;
     border: 1px solid var(--grisBarra);
     padding: 1.5rem 1rem;
-    height: 10rem;
+    height: 15rem;
 }
 
 .campo input[type="file"]{
@@ -880,6 +884,7 @@ p.parrafo-notificacion{
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
+    position: relative;
 }
 
 .formulario-ventana h3{
@@ -958,6 +963,15 @@ p.parrafo-notificacion{
     .formulario-ventana .campo input{
         border: 1px solid var(--negro);
         font-size: 1.8rem;
+    }
+    .formulario-ventana .contenedor-botones{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .formulario-ventana .contenedor-botones button{
+        margin: 0 2rem;
+        padding: 1rem 3rem!important;
     }
 }
 

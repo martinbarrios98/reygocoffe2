@@ -62,6 +62,7 @@ export async function insertarCategorias(){
 
         });
 
+        buscadorCategoria();
         editarCategoria();
         eliminarCategoria();
 
@@ -282,6 +283,83 @@ async function eliminarCategoria(){
 
         });
 
+    });
+
+}
+
+async function buscadorCategoria(){
+
+    const usuarios = document.querySelectorAll('.contenedor-categoria');
+    const inputBuscador = document.querySelector('#buscador');
+    const buscadorBoton = document.querySelector('#buscador-boton');
+
+    inputBuscador.addEventListener('keypress', e =>{
+
+        const texto = e.target.value.trim();
+        const expresion = new RegExp(`${texto}g`, "i");
+
+        if(e.keyCode === 13){
+
+            if(texto === ''){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Ingresa un valor para buscar!'
+                });
+            }else{
+
+                usuarios.forEach(usuario => {
+
+                    usuario.style.display = 'none';
+
+                    if(usuario.childNodes[1].textContent.replace(/\s/g, " ").search(texto) != -1){
+                        usuario.style.display = 'block';
+                    }
+            
+                });
+            }
+
+        }
+
+
+
+    });
+
+    inputBuscador.addEventListener('input', e => {
+        if(e.target.value === ''){
+            usuarios.forEach(usuario => {
+
+                usuario.style.display = 'block';
+        
+            });
+        }
+    });
+
+    
+    buscadorBoton.addEventListener('click', e =>{
+
+        if(inputBuscador.value === ''){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ingresa un valor para buscar!'
+            });
+        }else{
+
+            const texto = inputBuscador.value.trim();
+
+            usuarios.forEach(usuario => {
+
+                usuario.style.display = 'none';
+
+                if(usuario.childNodes[1].textContent.replace(/\s/g, " ").search(texto) != -1){
+                    usuario.style.display = 'block';
+                }
+        
+            });
+
+        }
+        
     });
 
 }

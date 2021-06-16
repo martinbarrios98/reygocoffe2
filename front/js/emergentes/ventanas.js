@@ -417,7 +417,7 @@ export async function ventanaProductoEditar( objeto ){
     const contenedorDisponibilidad = document.createElement('div');
     contenedorDisponibilidad.classList.add('campo');
     const labelDisponibilidad = document.createElement('label');
-    labelDisponibilidad.textContent = 'Categoria: ';
+    labelDisponibilidad.textContent = 'Disponibilidad: ';
     const selectDisponibilidad = document.createElement('select');
     selectDisponibilidad.id = 'disponibilidad-editar';
 
@@ -724,7 +724,7 @@ export async function ventanaEditarPedido( objeto ){
 
 export async function ventanaCategoriaEditar( objeto ){
 
-    const { id, nombre, url } = objeto;
+    const { id, nombre, url, descripcion } = objeto;
 
     const contenedor = document.querySelector('body');
 
@@ -756,6 +756,20 @@ export async function ventanaCategoriaEditar( objeto ){
 
     contenedorNombre.appendChild(labelNombrer);
     contenedorNombre.appendChild(inputNombre);
+
+    //Campo Descripcion
+
+    const contenedorDescripcion = document.createElement('div');
+    contenedorDescripcion.classList.add('campo');
+    const labelDescripcion = document.createElement('label');
+    labelDescripcion.textContent = 'Descripcion:';
+    const inputDescripcion = document.createElement('textarea');
+    inputDescripcion.id = 'descripcion-editar';
+    inputDescripcion.placeholder = 'Ingrese una descripcion';
+    inputDescripcion.value = descripcion;
+
+    contenedorDescripcion.appendChild(labelDescripcion);
+    contenedorDescripcion.appendChild(inputDescripcion);
 
     //Campo URL de Imagenes
 
@@ -801,6 +815,7 @@ export async function ventanaCategoriaEditar( objeto ){
     contenedorFormuario.appendChild(encabezadoFormulario);
     contenedorFormuario.appendChild(contenedorURL);
     contenedorFormuario.appendChild(contenedorNombre);
+    contenedorFormuario.appendChild(contenedorDescripcion);
     contenedorFormuario.appendChild(contenedorBoton);
 
     contenedorVentana.appendChild(contenedorFormuario);

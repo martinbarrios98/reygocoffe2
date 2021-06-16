@@ -114,13 +114,15 @@ export async function obtenerPedidosUsuario(id){
 
     let informacion = [];
 
-    pedidos.forEach(async pedido =>{
-
-        if(pedido.usuario.id === id){
-            informacion.push(pedido);
-        }
-
-    });
+    if(pedidos){
+        pedidos.forEach(async pedido =>{
+    
+            if(pedido.usuario.id === id){
+                informacion.push(pedido);
+            }
+    
+        });
+    }
 
     return informacion;
 

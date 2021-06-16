@@ -116,7 +116,8 @@ export async function informacionCatProducto (identificador){
     const parrafoCatNombre = document.querySelector('#categoria-nombre');
     const contenedorInformacionCate = document.querySelector('.contenedor-informacion-categoria');
 
-    const { id, nombre, url } = categoria;
+    const { id, nombre, url, descripcion } = categoria;
+    console.log(categoria);
     parrafoCatNombre.textContent = nombre;
 
     const imagen = document.createElement('img');
@@ -124,81 +125,8 @@ export async function informacionCatProducto (identificador){
     imagen.alt = `imagen-${nombre.trim()}`;
 
     const parrafoCate = document.createElement('p');
-    if(nombre === 'Esencias Gialinni'){
-        parrafoCate.textContent = `
+    parrafoCate.textContent = descripcion;
 
-        Prácticos y de gran versatilidad, se pueden usar como saborizante o salsa para decorar bebidas,
-        pos tres y alimentos, el límite es tu imaginación. Son los únicos en el mercado que no necesitan
-        refrigeración ni congelación
-       
-        `;
-    }
-    if(nombre === 'Polvos y Bases'){
-        parrafoCate.textContent =`
-
-        La marca Zaachila® se especializa en bebidas llenas de textura y delicioso sabor fáciles de preparar.
-        Impulsados por el esfuerzo y tradición de manos mexicanas que buscan crear grandes sabores, texturas y aromas que enamoren paladares.
-
-        `;
-    }
-    if(nombre === 'Zaate'){
-        parrafoCate.textContent = `
-
-        Son deliciosas bebidas base de té en polvo con ingredientes funcionales y exóticos sabores refrescantes, conoce las líneas An Tea Ox, Probio Tea e Inmuno Tea que te ayudan a llevar un estilo de vida saludable.
-
-        `;
-    }
-    if(nombre === 'Café Tostado'){
-        parrafoCate.textContent = `
-
-        En México contamos con poco más de 12 estados productores de café, entre los
-        más conocidos están: Chiapas, Veracruz, y Oaxaca, logrando
-        calidad extraordinaria al producir cafés de especialidad.
-        Con nosotros podrás encontrar café de diferentes regiones y mezclas que harán la
-        diferencia entre tu barra de café y todas las demás. Ofreciendo un café arabica con
-        una mezcla de granos (tyoica, bourbon y caturra). logrando obtener una taza con
-        trazabilidad de
-        84.5 puntos, donde resaltan notas como achocolatado, frutales entre otras.
-
-
-        `;
-    }
-    if(nombre === 'Café Verde '){
-        parrafoCate.textContent = `
-
-        Producido en los altos de Chiapas, en una zona de nombre tenejapa de la etnia tzeltal, donde su
-        principal medio de ingreso es la producción del café, se cosecha a una altura que van de los 1200 a
-        1600 msnm, cultivado de manera orgánica, seleccionando los mejores granos a mano por el
-        caficultor Alonzo López y familia; Dándonos así los mejores cuidados para obtener café de
-        calidad.
-
-
-        `;
-    }
-    if(nombre === 'Salsas Dulces y Extractos'){
-        parrafoCate.textContent = `
-
-        Extraordinario producto, por su versatilidad lo podemos utilizar de formas tan
-        variadas y con grandes resultados que te invitamos a seguir descrubiendolas y
-        compartiendo con nosotros, los grandes beneficios que esté producto nos brinda
-        para tu negocio.
-        Su uso va desde preparar un delicioso smoothie, pasando por la decoración de
-        postres, diversos platillos, hasta su aplicación en bebidas moleculares, rellenos en
-        pastelería, endulzante de nieves a base de yogurt, etc., etc.
-
-
-        `;
-    }
-    if(nombre === 'Tisanas y Té'){
-        parrafoCate.textContent = `
-
-        Las tisanas son bebidas hechas con frutos secos y hierbas. Se clasifican en frutales y herbales. Las tisanas frutales tiene una base de manzana y jamaica, que se combinan con diferentes frutos. Las tisanas herbales no tienen frutos deshidratados en esencia son hierbas y/o flores.
-
-
-        `;
-    }
-
-    
     const campo = document.createElement('div');
     campo.classList.add('campo');
 
