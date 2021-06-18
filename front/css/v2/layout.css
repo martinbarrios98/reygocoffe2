@@ -484,6 +484,10 @@ p.parrafo-notificacion{
     overflow: scroll;
 }
 
+.descripcion::-webkit-scrollbar{
+    appearance: none;
+}
+
 .peso{
     font-weight: var(--delgada);
     font-size: 1.5rem;
