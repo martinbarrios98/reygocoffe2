@@ -485,7 +485,7 @@ p.parrafo-notificacion{
 }
 
 .descripcion::-webkit-scrollbar{
-    appearance: none;
+    display: none;
 }
 
 .peso{
