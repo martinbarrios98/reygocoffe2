@@ -404,7 +404,6 @@ export async function agregarProducto(){
             confirmButtonText: 'Si, agregar producto!'
         }).then(async (result) => {
             if (result.isConfirmed) {
-              
                 const resultado = await creacionProducto(producto);
                 if(resultado.req.status === 200){
                     Swal.fire({

@@ -480,6 +480,8 @@ p.parrafo-notificacion{
 .descripcion{
     font-weight: var(--delgada);
     font-size: 1.5rem;
+    max-height: 10rem;
+    overflow: scroll;
 }
 
 .peso{

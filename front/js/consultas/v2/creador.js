@@ -62,7 +62,7 @@ export async function creacionProducto(objeto){
     }
     datos = datos.join("&");
 
-    const req = await fetch(`${urlBase}productos/nuevo`,{
+    const req = await fetch(`http://localhost:3000/productos/nuevo`,{
         mode: 'cors',
         method: 'post',
         headers: {
