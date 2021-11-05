@@ -1984,3 +1984,24 @@ p.parrafo-notificacion{
     font-size: 4rem;
     color: var(--blanco);
 }
+
+
+body{
+    display: grid;
+    place-items: center;
+    background-color: #e1e1e1;
+}
+
+.mantenimiento{
+    display: grid;
+    place-items: center;
+}
+
+.mantenimiento img{
+    width: 7rem;
+}
+
+.mantenimiento h1{
+    font-size: 7rem;
+    color: #000000;
+}

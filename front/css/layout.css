@@ -1169,3 +1169,16 @@ p.parrafo-notificacion{
         padding: 3rem;
     }
 }
+
+
+/**  MANTENIMIENTO **/
+
+body{
+    display: grid;
+    place-items: center;
+}
+
+.mantenimiento{
+    display: grid;
+    place-items: center;
+}
